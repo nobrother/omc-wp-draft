@@ -20,7 +20,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'loopman2');
+define('DB_NAME', 'draft');
 
 /** MySQL database username */
 define('DB_USER', 'root');
@@ -63,7 +63,7 @@ define('NONCE_SALT',       '{!-8iw%_BDQ2z[B?mDXE(F$71|UWj-!?K~r6Qa[ _V?0q +&1Wpd
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'lpm_';
+$table_prefix  = 'df_';
 
 /**
  * For developers: WordPress debugging mode.
@@ -103,7 +103,7 @@ if( WP_DEBUG ){
 /*
  * Site and home Path and URL 
  */
-$path = 'loopman2';
+$path = 'draft';
 define( 'WP_SITEURL', 'http://'.$_SERVER['HTTP_HOST'].'/'.$path );
 define( 'WP_HOME', WP_SITEURL );
 
