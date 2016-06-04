@@ -1,0 +1,26 @@
+[04-Jun-2016 03:23:00 UTC] PHP Warning:  include(S:\wamp\www\loopman2/wp-content/advanced-cache.php): failed to open stream: No such file or directory in S:\wamp\www\loopman2\wp-settings.php on line 74
+[04-Jun-2016 03:23:00 UTC] PHP Stack trace:
+[04-Jun-2016 03:23:00 UTC] PHP   1. {main}() S:\wamp\www\loopman2\wp-admin\admin-ajax.php:0
+[04-Jun-2016 03:23:00 UTC] PHP   2. require_once() S:\wamp\www\loopman2\wp-admin\admin-ajax.php:22
+[04-Jun-2016 03:23:00 UTC] PHP   3. require_once() S:\wamp\www\loopman2\wp-load.php:37
+[04-Jun-2016 03:23:00 UTC] PHP   4. require_once() S:\wamp\www\loopman2\wp-config.php:146
+[04-Jun-2016 03:23:00 UTC] PHP Warning:  include(): Failed opening 'S:\wamp\www\loopman2/wp-content/advanced-cache.php' for inclusion (include_path='.;C:\php\pear') in S:\wamp\www\loopman2\wp-settings.php on line 74
+[04-Jun-2016 03:23:00 UTC] PHP Stack trace:
+[04-Jun-2016 03:23:00 UTC] PHP   1. {main}() S:\wamp\www\loopman2\wp-admin\admin-ajax.php:0
+[04-Jun-2016 03:23:00 UTC] PHP   2. require_once() S:\wamp\www\loopman2\wp-admin\admin-ajax.php:22
+[04-Jun-2016 03:23:00 UTC] PHP   3. require_once() S:\wamp\www\loopman2\wp-load.php:37
+[04-Jun-2016 03:23:00 UTC] PHP   4. require_once() S:\wamp\www\loopman2\wp-config.php:146
+[04-Jun-2016 03:23:01 UTC] PHP Warning:  include(S:\wamp\www\loopman2/wp-content/advanced-cache.php): failed to open stream: No such file or directory in S:\wamp\www\loopman2\wp-settings.php on line 74
+[04-Jun-2016 03:23:01 UTC] PHP Stack trace:
+[04-Jun-2016 03:23:01 UTC] PHP   1. {main}() S:\wamp\www\loopman2\index.php:0
+[04-Jun-2016 03:23:01 UTC] PHP   2. require() S:\wamp\www\loopman2\index.php:17
+[04-Jun-2016 03:23:01 UTC] PHP   3. require_once() S:\wamp\www\loopman2\wp-blog-header.php:13
+[04-Jun-2016 03:23:01 UTC] PHP   4. require_once() S:\wamp\www\loopman2\wp-load.php:37
+[04-Jun-2016 03:23:01 UTC] PHP   5. require_once() S:\wamp\www\loopman2\wp-config.php:146
+[04-Jun-2016 03:23:01 UTC] PHP Warning:  include(): Failed opening 'S:\wamp\www\loopman2/wp-content/advanced-cache.php' for inclusion (include_path='.;C:\php\pear') in S:\wamp\www\loopman2\wp-settings.php on line 74
+[04-Jun-2016 03:23:01 UTC] PHP Stack trace:
+[04-Jun-2016 03:23:01 UTC] PHP   1. {main}() S:\wamp\www\loopman2\index.php:0
+[04-Jun-2016 03:23:01 UTC] PHP   2. require() S:\wamp\www\loopman2\index.php:17
+[04-Jun-2016 03:23:01 UTC] PHP   3. require_once() S:\wamp\www\loopman2\wp-blog-header.php:13
+[04-Jun-2016 03:23:01 UTC] PHP   4. require_once() S:\wamp\www\loopman2\wp-load.php:37
+[04-Jun-2016 03:23:01 UTC] PHP   5. require_once() S:\wamp\www\loopman2\wp-config.php:146
