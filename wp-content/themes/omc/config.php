@@ -1,0 +1,53 @@
+<?php
+global $theme_config;
+
+$theme_config = array(
+	'loader' => array(
+		'general' => array( 
+			'inc/constants.php',
+			'inc/functions/general.php',
+			'inc/functions/options.php',
+			'inc/functions/formatting.php',
+			'inc/functions/html-helper.php',
+			'inc/functions/general-template.php',
+			'inc/class/class-wp-exception.php',
+			'inc/class/class-omc-cpt.php',
+			'inc/load-scripts/load-scripts.php',
+			'inc/load-scripts/load-styles.php',
+			'inc/post-type/abstract-post-type-object.php',
+			'inc/post-type/abstract-post-type-custom-settings.php',			
+			'inc/post-type/page.php',
+			'inc/post-type/post.php',
+			'inc/post-type/post-hooks.php',
+			'inc/post-type/portfolio.php',			
+			'inc/mainframe/mainframe.php',			
+		),
+		'frontend' => array(
+			'inc/structure/header.php',
+			'inc/structure/footer.php',
+			'templates/common/widgets/tags-cloud/tags-cloud.php',
+			'templates/common/comments/class-walker-comments.php',
+		),
+		'backend' => array(
+			'inc/admin/functions.php',
+			'inc/admin/add-admin-notice.php',
+			'inc/admin/add-admin-menu.php',
+			'inc/admin/class/abstract-omc-admin.php',
+			'inc/admin/class/abstract-omc-admin-file-editor.php',
+			'inc/post-type/admin/abstract-post-type-admin.php',
+			'inc/post-type/admin/page.php',
+			'inc/post-type/admin/post.php',
+			'inc/post-type/admin/portfolio.php',
+			'inc/post-type/admin/admin.php',
+			'inc/taxonomy/admin/abstract-taxonomy.php',
+			'inc/taxonomy/admin/post_tag.php',
+		),
+		'ajax' => array(
+			'inc/post-type/abstract-post-type-ajax.php',
+			'inc/post-type/post-ajax.php',
+			'inc/post-type/page-ajax.php',
+			'inc/post-type/admin/page-ajax.php',
+			'inc/post-type/admin/portfolio-ajax.php',
+		),
+	),
+);

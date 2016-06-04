@@ -1,0 +1,102 @@
+/*====================
+* GRID
+*====================*/
+.row, .row-inline-block{
+	
+	// Cannot use gutter in mobile device
+	margin-left: 0!important;
+	margin-right: 0!important;
+	> div {
+		padding: 0 0!important;
+	}
+}
+
+
+/* WIDTH  --------------------------------------------------------------------------------------------------------*/
+img {	width: 100%}
+container {	max-width: 700px;}
+
+.navbar-brand {
+		float: none;
+    text-align: center;
+    height: 50px;
+    display: block;
+}
+
+
+/*====================
+* TYPOGRAPHY
+*====================*/
+.fs-intro-head() {
+	@fs: 48px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 1*@base-unit;
+	color: @orange-main;
+}
+
+.fs-big-tab-head() {
+	@fs: 48px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 2*@base-unit;
+}
+
+.fs-norm-tab-head() {
+	@fs: 36px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 2*@base-unit;
+}
+
+.fs-small-tab-head() {
+	@fs: 28px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 1*@base-unit;
+}
+
+.fs-sub-header() {
+	@fs: 28px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 1*@base-unit;
+}
+
+.fs-smaller-tab-head() {
+	@fs: 18px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 1*@base-unit;
+	color: @black;
+}
+
+.fs-smallest-tab-head() {
+	@fs: 24px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 2*@base-unit;
+}
+.fs-title() {
+	@fs: 18px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 1*@base-unit;
+	font-weight: 300;
+}
+
+.fs-small-title() {
+	@fs: 18px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 1*@base-unit;
+}
+
+.fs-smallest-title() {
+	@fs: 16px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 1*@base-unit;
+}
+
+.body1() {
+	@fs: 14px;
+	font-size: @fs;
+	line-height: roundup(@fs, @base-unit) + 1.5*@base-unit;
+}
+
+.body2() {
+	@fs: 13px;
+	font-size: @fs;
+	line-height: 3.5*@base-unit;
+}

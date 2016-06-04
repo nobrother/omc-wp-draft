@@ -1,0 +1,134 @@
+.block-contact{
+	.block-header{
+		margin-bottom: roundup(36px, @base-unit);
+		
+		h1{
+			@fn: 97px;
+			font-size: @fn;
+			line-height: roundup(@fn, @base-unit);
+			
+			margin-bottom: roundup(54px, @base-unit);
+		}
+		
+		p{
+			@fn: 21px;
+			font-size: @fn;
+			line-height: roundup(@fn, @base-unit) + 1*@base-unit;
+			color: @fn-color-black;
+		}
+	}
+	
+	.col-right{
+		max-width: roundup(405px, @hbase-unit);
+		padding-left: roundup(133px, @hbase-unit);
+	}
+	
+	.block-body{
+		margin-bottom: roundup(146px, @base-unit);		
+		
+		h1{
+			@fn: 42px;
+			font-size: @fn;
+			line-height: roundup(@fn, @base-unit);
+			color: @brand-color;
+			
+			margin-bottom: roundup(24px, @base-unit);
+		}
+	}
+	
+	.col-left-content, .col-right-content{
+		border-top: @top-line;
+		padding-top: roundup(30px, @base-unit);
+	}
+	
+	.col-right-content{
+		&.ask-forum{
+			p{
+				margin-bottom: roundup(32px, @base-unit);
+			}
+
+			.btn-primary{
+				display: block;
+				padding-left: 25px;
+				padding-right: 25px;
+			}
+		}
+
+		&.get-in-touch{
+			@fn: 26px;
+			@lh: roundup(@fn, @base-unit);
+			
+			li{
+				padding-left: 50px;
+				
+				.fa{
+					font-size: 25px;
+					line-height: @lh;
+					width: 1em;
+					text-align: center;
+				}
+				
+				font-size: @fn;
+				line-height: @lh;
+			}
+			
+		}
+	}
+	
+	.block-footer{
+		.footer-content{
+			border-top: @top-line;
+			padding-top: roundup(36px, @base-unit);
+		}
+		
+		h1{
+			@fn: 42px;
+			font-size: @fn;
+			line-height: roundup(@fn, @base-unit);
+			color: @brand-color;
+		}
+		
+		.get-in-touch{
+			span{
+				@fn: 30px;
+				font-size: @fn;
+				line-height: roundup(@fn, @base-unit);
+				color: @fn-color-grey1;
+			}
+			.fa{
+				@fn: 26px;
+				font-size: @fn;
+				line-height: roundup(@fn, @base-unit);
+				color: @brand-color;
+				margin-right: roundup(15px, @hbase-unit);
+			}
+			address{
+				margin-bottom: roundup(32px, @base-unit);
+			}
+			p{
+				span{
+					@fn: 24px;
+					font-size: @fn;
+					line-height: roundup(@fn, @base-unit);
+				}
+			}
+		}
+		
+		.ask-forum{
+			.description{
+				max-width: 380px;
+				width: 100%;
+			}
+			
+			.goto-forum{
+				max-width: 268px;
+				width: 100%;
+
+				.btn-primary{
+					display: block;
+					padding: roundup(15px, @base-unit) 0;
+				}
+			}
+		}
+	}
+}

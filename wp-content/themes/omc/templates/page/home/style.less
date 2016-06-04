@@ -1,0 +1,40 @@
+#page-home{
+	
+	.card-page-general{
+		max-width: roundup(934px, @hbase-unit);
+		.Row > .setGutter(roundup(45px, @hbase-unit));
+	}
+}
+
+#home-block-intro{
+	padding-top: roundup(165px, @base-unit);
+	
+	header{
+		margin-bottom: roundup(83px, @base-unit);
+		
+		h1, img{
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+	
+	h1{
+		@fn: 116px;
+		font-size: @fn;
+		line-height: roundup(@fn, @base-unit);
+		
+		margin-right: roundup(85px, @hbase-unit);
+	}
+	
+	p{
+		@fn: 42px;
+		font-size: @fn;
+		line-height: roundup(@fn, @base-unit) + 1*@base-unit;
+		color: #999;
+		
+		margin-bottom: roundup(60px, @base-unit);
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+}

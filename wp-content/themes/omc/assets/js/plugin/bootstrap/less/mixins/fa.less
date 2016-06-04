@@ -1,0 +1,68 @@
+// Mixins
+// --------------------------
+
+.fa() {
+  &:before{
+    display: inline-block;
+    font: normal normal normal @fa-font-size-base/1 FontAwesome; // shortening font declaration
+    font-size: inherit; // can't have font-size inherit on line above, so need to override
+    text-rendering: auto; // optimizelegibility throws things off #1094
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0); // ensures no half-pixel rendering in firefox
+  }
+}
+
+.fa-vm() {
+	.fa();
+  &:before{
+    vertical-align: middle 
+  }
+  
+  &:after {
+  	content: '';
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    vertical-align: middle;
+  }
+  
+}
+
+.fa-pa() {
+  .fa();
+  position: relative;
+  &:before{     
+    position: absolute;
+    height: 1em;
+  }
+}
+
+.fa-vm-pa() {
+  .fa-pa();
+  &:before{  
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+
+.fa-icon-before(@icon-name){
+  &:before {
+  	content: @icon-name;    
+  }  
+}
+
+.fa-icon-rotate(@degrees, @rotation) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=@rotation);
+  -webkit-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees);
+          transform: rotate(@degrees);
+}
+
+.fa-icon-flip(@horiz, @vert, @rotation) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=@rotation, mirror=1);
+  -webkit-transform: scale(@horiz, @vert);
+      -ms-transform: scale(@horiz, @vert);
+          transform: scale(@horiz, @vert);
+}

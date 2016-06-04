@@ -1,0 +1,95 @@
+#top-nav {
+	
+	.container{
+		.container(1170px, @padding-side);
+	}
+	
+	.nav-content{
+		position: relative;
+		width: 100%;
+		background-color: #fff;
+	}
+	
+	margin-bottom: 0;
+	
+  border: none;
+	
+	// Height
+	@height: roundup(153px, @base-unit);
+	
+	min-height: @height;
+	
+	.navbar-brand {
+		height: @height;
+		padding: 0;
+		.inline-block-vertical-align-middle-with-fix-height;		
+	}
+	
+	.main-logo{
+		height: 70%;
+		img{
+			height: 100%;
+		}
+	}
+	
+	@horizontal-padding: roundup(50px, @base-unit);
+	
+	.navbar-nav > li {
+		&:hover a, & a:hover, & a:focus {
+			opacity: 0.9;
+		}
+		
+		> a {
+			height: @height;
+
+			@fs: 21px;
+			@line-height: roundup(@fs, @base-unit) + 1*@base-unit;
+			@vertical-padding: (@height - @line-height)/2;
+			font-size: @fs;
+			font-weight: @normal;
+			line-height: @line-height;
+			
+			padding: @vertical-padding 6*@base-unit;
+		}
+		
+		&.active > a {
+			background-color: transparent;
+			color: @brand-color;
+		}
+	
+	}
+	
+	#nav-item-talk-to-us{
+		@lh: 56px;
+		@bg-color: @brand-color;
+		
+		> a{
+			padding: (@height - @lh)/2 3*@base-unit;
+		}
+
+		span{
+			display: block;
+			position: relative;
+			padding: 0 20px;
+			background-color: @bg-color;
+			border-radius: 8px/4px;
+
+			font-size: 21px;
+			font-weight: @bold;
+			line-height: @lh;
+			color: @fn-color-white;
+			
+			&:after{
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-top: 13px solid transparent;
+				border-right: 21px solid @bg-color;
+				border-bottom: 13px solid transparent;
+				right: 0;
+				bottom: -13px;
+			}
+		}
+	}
+}

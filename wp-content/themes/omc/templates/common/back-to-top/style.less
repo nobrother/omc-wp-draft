@@ -1,0 +1,17 @@
+.btn.btn-back-to-top{
+	color: @brand-color;
+	font-size: 80px;
+	line-height: 1em;
+	padding: 15px;
+	&:hover{
+		opacity: 0.8;
+	}
+	
+	position: fixed;
+	bottom: -100px;
+	right: 50px;
+	&.active{
+		bottom: 50px;
+	}
+	transition: bottom 0.3s cubic-bezier(0.730, 0.010, 0.165, 1.055) 0.5s;
+}
