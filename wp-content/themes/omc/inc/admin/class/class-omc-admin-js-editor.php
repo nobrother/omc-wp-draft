@@ -30,6 +30,23 @@ class OMC_JS_Editor_Settings extends OMC_File_Editor_Settings {
 		add_action( $this->page_id.'_file_editor_html', function(){
 			$this->print_editor( 'Edit Javascripts', array( 'js' ), OMC_JS_DIR.'/theme' );
 		});
+		
+		// Compile js
+		add_action( 'omc_admin_file_editor_after_file_saved', array( $this, 'compile_js' ) );
+	}
+	
+	// Compile js
+	function compile_js( $current_file ){
+		
+		if( 
+			is_menu_page( $this->page_id ) &&
+			!empty( $current_file ) &&
+			!empty( $current_file['extension'] ) &&
+			in_array( $current_file['extension'], array( 'js' ) )
+		){
+			
+			compile_js();
+		}
 	}
 }
 

@@ -43,9 +43,7 @@ abstract class OMC_File_Editor_Settings extends OMC_Admin_Basic {
 		if( is_menu_page( $this->page_id ) ){
 		
 			// Load editor js
-			omc_add_theme_js( OMC_JS_THEME_DIR.'/admin-editor.js' );
-			$ctrl_s = array( 'target' => 'form.ajax-save'	);
-			wp_localize_script( 'admin', 'ctrl_s_target', $ctrl_s );
+			wp_localize_script( 'admin', 'ctrl_s_target', array( 'target' => 'form.ajax-save'	) );
 			
 			// Load codemirror
 			omc_load_codemirror();

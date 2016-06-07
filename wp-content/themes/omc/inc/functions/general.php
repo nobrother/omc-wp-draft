@@ -366,10 +366,12 @@ function is_omc_ajax(){
 
 /* 
  * List all the files and folders in a Directory 
+ * List down all files, then all directories
  */
 function scandir_recursive( $dir, $is_pathinfo = false, $preg_pattern = false, &$results = array() ){
     $files = scandir( $dir );
-
+		$dirs = array();
+		
     foreach( $files as $filename ){
 			
 			if( $filename != '.' 
@@ -378,8 +380,9 @@ function scandir_recursive( $dir, $is_pathinfo = false, $preg_pattern = false, &
 				
 				$path = wp_normalize_path( $dir.'/'.$filename );
 				
+				// Store directory path for later use
 				if( is_dir( $path ) )
-					scandir_recursive( $path, $is_pathinfo, $preg_pattern, $results );					
+					$dirs[] = $path;
 				
 				else {
 					if( $preg_pattern !== false && !preg_match( $preg_pattern, $path ) )
@@ -391,6 +394,10 @@ function scandir_recursive( $dir, $is_pathinfo = false, $preg_pattern = false, &
 				}
 			}			
     }
+		
+		foreach( $dirs as $dir ){
+			scandir_recursive( $dir, $is_pathinfo, $preg_pattern, $results );
+		}
 
     return $results;
 }
@@ -498,5 +505,64 @@ function compile_less(){
 			file_put_contents( $cache_file, serialize( $new_cache ) );
 			file_put_contents( $output_file, $new_cache['compiled'] );
 		}
+	}
+}
+
+/* 
+ * Compile Javascipts in OMC style
+ */
+function compile_js(){
+	$scripts_list = apply_filters( 'omc_enqueue_theme_scripts_list', array( 'main', 'site' ) );
+	$pc_js = $mobile_js = $tablet_js = array_map( function( $value ){
+		return OMC_JS_THEME_DIR.'/'.$value.'.js';
+	}, $scripts_list );
+	
+	$admin_scripts_list = apply_filters( 'omc_enqueue_admin_scripts_list', array( 'admin', 'admin-editor' ) );
+	$admin_js = array_map( function( $value ){
+		return OMC_JS_THEME_DIR.'/'.$value.'.js';
+	}, $admin_scripts_list );
+	
+	// Templates
+	$files = scandir_recursive( OMC_TEMPLATE_DIR, true, '/extend\.js$/' );	
+	
+	foreach( $files as $file ){
+		$pc_js[] = $file['file'];
+		$mobile_file = $file['dirname'].'/'.$file['filename'].'-mobile.js';
+		$tablet_file = $file['dirname'].'/'.$file['filename'].'-tablet.js';
+		if( file_exists( $mobile_file ) ){
+			$mobile_js[] = $mobile_file;
+			$tablet_js[] = file_exists( $tablet_file ) ? $tablet_file : $mobile_file;						
+		} else {
+			$mobile_js[] = $file['file'];
+			$tablet_js[] = file_exists( $tablet_file ) ? $tablet_file : $file['file'];					
+		}	
+	}
+	
+	// Combine and minify
+	$cache = array();
+	foreach( array( 'pc', 'mobile', 'tablet', 'admin' ) as $type ){
+		$var = $type.'_js';
+		$f = fopen( omc_theme_js_path_url( $type ), 'w+' );
+		foreach( $$var as $file ){
+			
+			if( !isset( $cache[$file] ) ){
+				
+				$cache_file = CACHES_DIR.'/'.md5( $file.filemtime( $file ) ).'.js.cache';
+				
+				if( file_exists( $cache_file ) )
+					$cache[$file] = file_get_contents( $cache_file );
+				
+				else{
+					if( !class_exists( '\JShrink\Minifier' ) )
+						require_once OMC_APPS_DIR.'/JShrink/Minifier.php';
+					
+					// Store cache
+					$cache[$file] = \JShrink\Minifier::minify( file_get_contents( $file ), array( 'flaggedComments' => true ) );
+					$cache_file = file_put_contents( $cache_file, $cache[$file] );
+				}
+			}
+			fwrite( $f, $cache[$file] );			
+		}
+		fclose( $f );
 	}
 }

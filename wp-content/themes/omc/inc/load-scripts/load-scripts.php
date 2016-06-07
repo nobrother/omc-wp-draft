@@ -48,6 +48,14 @@
  * 50			- omc_last_scripts
  */
 
+ 
+/**
+ * Helper function to load backbone
+ */ 
+function omc_load_backbone(){
+	wp_enqueue_script( 'underscore', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', array(), false, true );	
+	wp_enqueue_script( 'backbone', 'https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js', array(), false, true );	
+}
 /**
  * Helper function to load froala editor
  */
@@ -469,20 +477,13 @@ function omc_enqueue_js_plugin() {
  */
 add_action( 'wp_enqueue_scripts', 'omc_enqueue_theme_scripts', 20 );
 function omc_enqueue_theme_scripts() {	
-
-	/**
-	 * Enqueue general scripts
-	 * Options:
-	 * - 'main', 'jquery'
-	 * - 'push-menu', 'main'
-	 * - 'apps', 'main'
-	 * - 'site', 'main'
-	 * - 'ajax', 'main'
-	 * - 
-	 */
-	$scripts_list = apply_filters( 'omc_enqueue_theme_scripts_list', array( 'main' => 'jquery', 'site' => 'main' ) );
-	foreach( $scripts_list as $script_name => $dependancy )
-		omc_add_theme_js( OMC_JS_THEME_DIR.'/'.$script_name.'.js', $dependancy );
+	
+	if( is_tablet() )
+		wp_enqueue_script( 'main', omc_theme_js_path_url( 'tablet', 'url' ), array(), false, true );
+	else if( is_mobile() )
+		wp_enqueue_script( 'main', omc_theme_js_path_url( 'mobile', 'url' ), array(), false, true );
+	else
+		wp_enqueue_script( 'main', omc_theme_js_path_url( 'pc', 'url' ), array(), false, true );
 	
 	wp_localize_script( 'main', 'info',
 		array
@@ -529,17 +530,7 @@ function omc_last_scripts_hook(){
 add_action( 'admin_enqueue_scripts', 'omc_load_admin_scripts' );
 function omc_load_admin_scripts( $hook_suffix ) {
 	
-	// Admin js must load first
-	//omc_load_bootstrap();
-	omc_add_theme_js( OMC_JS_THEME_DIR.'/admin.js', array() );
-	/*
-	omc_add_theme_js( OMC_JS_THEME_DIR.'/admin-editor.js', array() );	
-	wp_localize_script( 'admin-editor', 'ctrl_s_target',
-		array( 
-			'target' => '#post',
-		)
-	);
-	*/
+	wp_enqueue_script( 'admin', omc_theme_js_path_url( 'admin', 'url' ), array(), false, true );
 	
 	// OMC admin enqueue script Hook
 	do_action( 'omc_admin_enqueue_scripts', $hook_suffix );
@@ -556,23 +547,6 @@ function load_js_plugin( $fn = '' ){
 		
 	add_action( 'wp_enqueue_scripts', $fn, 10 );
 	
-}
-
-/**
- * Helper function to load theme script
- */
-function load_theme_js( $filename, $dependancy = 'main' ){
-	
-	// Check input
-	if( empty( $filename ) )
-		return false;
-	
-	// Filename options
-	$file = OMC_JS_DIR.'/'.$filename.'js';
-	
-	add_action( 'wp_enqueue_scripts', function() use ( $file, $dependancy ){
-		omc_add_theme_js( $file, $dependancy );
-	}, 20 ); 
 }
 
 /**
@@ -605,3 +579,10 @@ function omc_add_plugin_js( $handler, $plugin_name, $filename, $depandancy = arr
 	wp_enqueue_script( $handler, omc_path_to_url( OMC_JS_PLUGIN_DIR.'/'.$plugin_name.'/'.$filename.'.js' ), $depandancy, false, true );
 }
 
+
+/**
+ * Helper function to get theme js path/url
+ */
+function omc_theme_js_path_url( $device, $type = 'path' ){
+	return ( $type == 'path' ? CACHES_DIR : CACHES_URL ).'/'.$device.'.js';
+}

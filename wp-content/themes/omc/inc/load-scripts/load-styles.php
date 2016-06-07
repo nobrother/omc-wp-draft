@@ -139,7 +139,7 @@ function load_external_font( $handler = '', $url = '' ){
  * Helper function to load font awesome
  */
 function omc_load_fontawesome(){
-	wp_enqueue_style( 'fa', OMC_FONTS_URL.'/font-awesome/font-awesome.min.css' );	
+	wp_enqueue_style( 'fa', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css' );	
 }
 
 /**
