@@ -543,6 +543,7 @@ function compile_js(){
 	foreach( array( 'pc', 'mobile', 'tablet', 'admin' ) as $type ){
 		$var = $type.'_js';
 		$f = fopen( omc_theme_js_path_url( $type ), 'w+' );
+		
 		foreach( $$var as $file ){
 			
 			if( !isset( $cache[$file] ) ){

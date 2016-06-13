@@ -14,6 +14,8 @@ $theme_config = array(
 			'inc/class/class-omc-cpt.php',
 			'inc/load-scripts/load-scripts.php',
 			'inc/load-scripts/load-styles.php',
+			'inc/router.php',
+			'inc/user/class-user.php',
 			'inc/post-type/abstract-post-type-object.php',
 			'inc/post-type/abstract-post-type-custom-settings.php',			
 			'inc/post-type/page.php',

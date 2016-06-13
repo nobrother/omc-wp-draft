@@ -32,19 +32,26 @@ class OMC_Template_Editor_Settings extends OMC_File_Editor_Settings {
 		});
 		
 		// Compile less
-		add_action( 'omc_admin_file_editor_after_file_saved', array( $this, 'compile_less' ) );
+		add_action( 'omc_admin_file_editor_after_file_saved', array( $this, 'compile_scripts' ) );
 	}
 	
 	// Compile less
-	function compile_less( $current_file ){
+	function compile_scripts( $current_file ){
+		
 		
 		if( 
 			is_menu_page( $this->page_id ) &&
 			!empty( $current_file ) &&
-			!empty( $current_file['extension'] ) &&
-			in_array( $current_file['extension'], array( 'css', 'less' ) )
+			!empty( $current_file['extension'] )
 		){
-			compile_less();
+			
+			// Compile less
+			if( in_array( $current_file['extension'], array( 'css', 'less' ) ) )
+				compile_less();
+			
+			// Compile js
+			if( in_array( $current_file['extension'], array( 'js' ) ) )
+				compile_js();
 		}
 	}
 }

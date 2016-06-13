@@ -262,3 +262,316 @@ Stack trace:
 [06-Jun-2016 07:05:09 UTC] PHP   1. {main}() S:\wamp\www\draft\api\compile-js\index.php:0
 [06-Jun-2016 07:05:09 UTC] PHP   2. compile_js() S:\wamp\www\draft\api\compile-js\index.php:9
 [06-Jun-2016 07:05:09 UTC] PHP   3. file_get_contents() S:\wamp\www\draft\wp-content\themes\omc\inc\functions\general.php:560
+[07-Jun-2016 07:30:13 UTC] PHP Notice:  Use of undefined constant OMC_TEMPLATES_DIR - assumed 'OMC_TEMPLATES_DIR' in S:\wamp\www\draft\wp-content\themes\omc\inc\router.php on line 17
+[07-Jun-2016 07:30:13 UTC] PHP Stack trace:
+[07-Jun-2016 07:30:13 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\index.php:0
+[07-Jun-2016 07:30:13 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\index.php:10
+[07-Jun-2016 07:30:13 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-admin\admin.php:31
+[07-Jun-2016 07:30:13 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-load.php:37
+[07-Jun-2016 07:30:13 UTC] PHP   5. require_once() S:\wamp\www\draft\wp-config.php:160
+[07-Jun-2016 07:30:13 UTC] PHP   6. include() S:\wamp\www\draft\wp-settings.php:369
+[07-Jun-2016 07:30:13 UTC] PHP   7. require_once() S:\wamp\www\draft\wp-content\themes\omc\functions.php:27
+[07-Jun-2016 07:30:13 UTC] PHP   8. OMC\Router->__construct() S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:47
+[07-Jun-2016 07:30:13 UTC] PHP Notice:  Use of undefined constant OMC_TEMPLATES_DIR - assumed 'OMC_TEMPLATES_DIR' in S:\wamp\www\draft\wp-content\themes\omc\inc\router.php on line 17
+[07-Jun-2016 07:30:13 UTC] PHP Stack trace:
+[07-Jun-2016 07:30:13 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-login.php:0
+[07-Jun-2016 07:30:13 UTC] PHP   2. require() S:\wamp\www\draft\wp-login.php:12
+[07-Jun-2016 07:30:13 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[07-Jun-2016 07:30:13 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[07-Jun-2016 07:30:13 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[07-Jun-2016 07:30:13 UTC] PHP   6. require_once() S:\wamp\www\draft\wp-content\themes\omc\functions.php:27
+[07-Jun-2016 07:30:13 UTC] PHP   7. OMC\Router->__construct() S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:47
+[07-Jun-2016 08:11:15 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:40) in S:\wamp\www\draft\wp-includes\option.php on line 823
+[07-Jun-2016 08:11:15 UTC] PHP Stack trace:
+[07-Jun-2016 08:11:15 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:11:15 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:11:15 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:11:15 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:823
+[07-Jun-2016 08:11:15 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:40) in S:\wamp\www\draft\wp-includes\option.php on line 824
+[07-Jun-2016 08:11:15 UTC] PHP Stack trace:
+[07-Jun-2016 08:11:15 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:11:15 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:11:15 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:11:15 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:824
+[07-Jun-2016 08:25:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:39) in S:\wamp\www\draft\wp-includes\option.php on line 823
+[07-Jun-2016 08:25:08 UTC] PHP Stack trace:
+[07-Jun-2016 08:25:08 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:25:08 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:25:08 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:25:08 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:823
+[07-Jun-2016 08:25:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:39) in S:\wamp\www\draft\wp-includes\option.php on line 824
+[07-Jun-2016 08:25:08 UTC] PHP Stack trace:
+[07-Jun-2016 08:25:08 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:25:08 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:25:08 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:25:08 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:824
+[07-Jun-2016 08:27:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:39) in S:\wamp\www\draft\wp-includes\option.php on line 823
+[07-Jun-2016 08:27:37 UTC] PHP Stack trace:
+[07-Jun-2016 08:27:37 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:27:37 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:27:37 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:27:37 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:823
+[07-Jun-2016 08:27:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:39) in S:\wamp\www\draft\wp-includes\option.php on line 824
+[07-Jun-2016 08:27:37 UTC] PHP Stack trace:
+[07-Jun-2016 08:27:37 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:27:37 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:27:37 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:27:37 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:824
+[07-Jun-2016 08:29:01 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:40) in S:\wamp\www\draft\wp-includes\option.php on line 823
+[07-Jun-2016 08:29:01 UTC] PHP Stack trace:
+[07-Jun-2016 08:29:01 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:29:01 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:29:01 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:29:01 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:823
+[07-Jun-2016 08:29:01 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:40) in S:\wamp\www\draft\wp-includes\option.php on line 824
+[07-Jun-2016 08:29:01 UTC] PHP Stack trace:
+[07-Jun-2016 08:29:01 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:29:01 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:29:01 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:29:01 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:824
+[07-Jun-2016 08:31:32 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:40) in S:\wamp\www\draft\wp-includes\option.php on line 823
+[07-Jun-2016 08:31:32 UTC] PHP Stack trace:
+[07-Jun-2016 08:31:32 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:31:32 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:31:32 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:31:32 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:823
+[07-Jun-2016 08:31:32 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at S:\wamp\www\draft\wp-content\themes\omc\inc\router.php:40) in S:\wamp\www\draft\wp-includes\option.php on line 824
+[07-Jun-2016 08:31:32 UTC] PHP Stack trace:
+[07-Jun-2016 08:31:32 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[07-Jun-2016 08:31:32 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[07-Jun-2016 08:31:32 UTC] PHP   3. wp_user_settings() S:\wamp\www\draft\wp-admin\admin-header.php:58
+[07-Jun-2016 08:31:32 UTC] PHP   4. setcookie() S:\wamp\www\draft\wp-includes\option.php:824
+[07-Jun-2016 08:34:24 UTC] PHP Notice:  Undefined variable: template_file in S:\wamp\www\draft\wp-content\themes\omc\inc\router.php on line 55
+[07-Jun-2016 08:34:24 UTC] PHP Stack trace:
+[07-Jun-2016 08:34:24 UTC] PHP   1. {main}() S:\wamp\www\draft\index.php:0
+[07-Jun-2016 08:34:24 UTC] PHP   2. require() S:\wamp\www\draft\index.php:17
+[07-Jun-2016 08:34:24 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-blog-header.php:19
+[07-Jun-2016 08:34:24 UTC] PHP   4. apply_filters() S:\wamp\www\draft\wp-includes\template-loader.php:74
+[07-Jun-2016 08:34:24 UTC] PHP   5. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[07-Jun-2016 08:34:24 UTC] PHP   6. OMC\Router->template_include() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 02:52:06 UTC] PHP Parse error:  syntax error, unexpected '.', expecting ')' in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 12
+[09-Jun-2016 02:52:06 UTC] PHP Stack trace:
+[09-Jun-2016 02:52:06 UTC] PHP   1. {main}() S:\wamp\www\draft\index.php:0
+[09-Jun-2016 02:52:06 UTC] PHP   2. require() S:\wamp\www\draft\index.php:17
+[09-Jun-2016 02:52:06 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-blog-header.php:13
+[09-Jun-2016 02:52:06 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 02:52:06 UTC] PHP   5. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 02:52:06 UTC] PHP   6. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 03:22:24 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'OMC\User\Main' does not have a method 'edit_profile_url' in S:\wamp\www\draft\wp-includes\plugin.php on line 235
+[09-Jun-2016 03:22:24 UTC] PHP Stack trace:
+[09-Jun-2016 03:22:24 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\index.php:0
+[09-Jun-2016 03:22:24 UTC] PHP   2. include() S:\wamp\www\draft\wp-admin\index.php:92
+[09-Jun-2016 03:22:24 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-header.php:214
+[09-Jun-2016 03:22:24 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:24 UTC] PHP   5. wp_admin_bar_render() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:24 UTC] PHP   6. do_action_ref_array() S:\wamp\www\draft\wp-includes\admin-bar.php:81
+[09-Jun-2016 03:22:24 UTC] PHP   7. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:601}() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 03:22:24 UTC] PHP   8. wp_admin_bar_my_account_menu() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 03:22:24 UTC] PHP   9. get_edit_profile_url() S:\wamp\www\draft\wp-includes\admin-bar.php:226
+[09-Jun-2016 03:22:24 UTC] PHP  10. apply_filters() S:\wamp\www\draft\wp-includes\link-template.php:3501
+[09-Jun-2016 03:22:24 UTC] PHP  11. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 03:22:24 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'OMC\User\Main' does not have a method 'logout_url' in S:\wamp\www\draft\wp-includes\plugin.php on line 235
+[09-Jun-2016 03:22:24 UTC] PHP Stack trace:
+[09-Jun-2016 03:22:24 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\index.php:0
+[09-Jun-2016 03:22:24 UTC] PHP   2. include() S:\wamp\www\draft\wp-admin\index.php:92
+[09-Jun-2016 03:22:24 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-header.php:214
+[09-Jun-2016 03:22:24 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:24 UTC] PHP   5. wp_admin_bar_render() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:24 UTC] PHP   6. do_action_ref_array() S:\wamp\www\draft\wp-includes\admin-bar.php:81
+[09-Jun-2016 03:22:24 UTC] PHP   7. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:601}() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 03:22:24 UTC] PHP   8. wp_admin_bar_my_account_menu() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 03:22:24 UTC] PHP   9. wp_logout_url() S:\wamp\www\draft\wp-includes\admin-bar.php:267
+[09-Jun-2016 03:22:24 UTC] PHP  10. apply_filters() S:\wamp\www\draft\wp-includes\general-template.php:318
+[09-Jun-2016 03:22:24 UTC] PHP  11. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 03:22:24 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'OMC\User\Main' does not have a method 'edit_profile_url' in S:\wamp\www\draft\wp-includes\plugin.php on line 235
+[09-Jun-2016 03:22:24 UTC] PHP Stack trace:
+[09-Jun-2016 03:22:24 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\index.php:0
+[09-Jun-2016 03:22:24 UTC] PHP   2. include() S:\wamp\www\draft\wp-admin\index.php:92
+[09-Jun-2016 03:22:24 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-header.php:214
+[09-Jun-2016 03:22:24 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:24 UTC] PHP   5. wp_admin_bar_render() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:24 UTC] PHP   6. do_action_ref_array() S:\wamp\www\draft\wp-includes\admin-bar.php:81
+[09-Jun-2016 03:22:24 UTC] PHP   7. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:601}() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 03:22:24 UTC] PHP   8. wp_admin_bar_my_account_item() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 03:22:24 UTC] PHP   9. get_edit_profile_url() S:\wamp\www\draft\wp-includes\admin-bar.php:189
+[09-Jun-2016 03:22:24 UTC] PHP  10. apply_filters() S:\wamp\www\draft\wp-includes\link-template.php:3501
+[09-Jun-2016 03:22:24 UTC] PHP  11. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 03:22:24 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'OMC\User\Main' does not have a method 'logout_url' in S:\wamp\www\draft\wp-includes\plugin.php on line 235
+[09-Jun-2016 03:22:24 UTC] PHP Stack trace:
+[09-Jun-2016 03:22:24 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\index.php:0
+[09-Jun-2016 03:22:24 UTC] PHP   2. include() S:\wamp\www\draft\wp-admin\index.php:92
+[09-Jun-2016 03:22:24 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-header.php:214
+[09-Jun-2016 03:22:24 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:24 UTC] PHP   5. wp_admin_bar_render() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:24 UTC] PHP   6. WP_Admin_Bar->render() S:\wamp\www\draft\wp-includes\admin-bar.php:90
+[09-Jun-2016 03:22:24 UTC] PHP   7. WP_Admin_Bar->_render() S:\wamp\www\draft\wp-includes\class-wp-admin-bar.php:266
+[09-Jun-2016 03:22:24 UTC] PHP   8. wp_logout_url() S:\wamp\www\draft\wp-includes\class-wp-admin-bar.php:426
+[09-Jun-2016 03:22:24 UTC] PHP   9. apply_filters() S:\wamp\www\draft\wp-includes\general-template.php:318
+[09-Jun-2016 03:22:24 UTC] PHP  10. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 03:22:25 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'OMC\User\Main' does not have a method 'login_url' in S:\wamp\www\draft\wp-includes\plugin.php on line 235
+[09-Jun-2016 03:22:25 UTC] PHP Stack trace:
+[09-Jun-2016 03:22:25 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\index.php:0
+[09-Jun-2016 03:22:25 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\index.php:132
+[09-Jun-2016 03:22:25 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-footer.php:74
+[09-Jun-2016 03:22:25 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:25 UTC] PHP   5. wp_auth_check_html() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 03:22:25 UTC] PHP   6. wp_login_url() S:\wamp\www\draft\wp-includes\functions.php:5024
+[09-Jun-2016 03:22:25 UTC] PHP   7. apply_filters() S:\wamp\www\draft\wp-includes\general-template.php:349
+[09-Jun-2016 03:22:25 UTC] PHP   8. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 05:47:03 UTC] PHP Parse error:  syntax error, unexpected '}' in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 86
+[09-Jun-2016 05:47:03 UTC] PHP Stack trace:
+[09-Jun-2016 05:47:03 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\admin-ajax.php:0
+[09-Jun-2016 05:47:03 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\admin-ajax.php:22
+[09-Jun-2016 05:47:03 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 05:47:03 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 05:47:03 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 05:48:04 UTC] PHP Parse error:  syntax error, unexpected '}' in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 86
+[09-Jun-2016 05:48:04 UTC] PHP Stack trace:
+[09-Jun-2016 05:48:04 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\admin-ajax.php:0
+[09-Jun-2016 05:48:04 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\admin-ajax.php:22
+[09-Jun-2016 05:48:04 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 05:48:04 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 05:48:04 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 05:50:06 UTC] PHP Parse error:  syntax error, unexpected '}' in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 98
+[09-Jun-2016 05:50:06 UTC] PHP Stack trace:
+[09-Jun-2016 05:50:06 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\admin-ajax.php:0
+[09-Jun-2016 05:50:06 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\admin-ajax.php:22
+[09-Jun-2016 05:50:06 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 05:50:06 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 05:50:06 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 05:52:06 UTC] PHP Parse error:  syntax error, unexpected '}' in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 98
+[09-Jun-2016 05:52:06 UTC] PHP Stack trace:
+[09-Jun-2016 05:52:06 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\admin-ajax.php:0
+[09-Jun-2016 05:52:06 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\admin-ajax.php:22
+[09-Jun-2016 05:52:06 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 05:52:06 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 05:52:06 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 05:54:07 UTC] PHP Parse error:  syntax error, unexpected '}' in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 98
+[09-Jun-2016 05:54:07 UTC] PHP Stack trace:
+[09-Jun-2016 05:54:07 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\admin-ajax.php:0
+[09-Jun-2016 05:54:07 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\admin-ajax.php:22
+[09-Jun-2016 05:54:07 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 05:54:07 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 05:54:07 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 05:56:07 UTC] PHP Parse error:  syntax error, unexpected '}' in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 98
+[09-Jun-2016 05:56:07 UTC] PHP Stack trace:
+[09-Jun-2016 05:56:07 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\admin-ajax.php:0
+[09-Jun-2016 05:56:07 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\admin-ajax.php:22
+[09-Jun-2016 05:56:07 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 05:56:07 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 05:56:07 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 06:00:32 UTC] PHP Parse error:  syntax error, unexpected '}' in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 106
+[09-Jun-2016 06:00:32 UTC] PHP Stack trace:
+[09-Jun-2016 06:00:32 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\admin-ajax.php:0
+[09-Jun-2016 06:00:32 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\admin-ajax.php:22
+[09-Jun-2016 06:00:32 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 06:00:32 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 06:00:32 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 06:00:33 UTC] PHP Parse error:  syntax error, unexpected '}' in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 106
+[09-Jun-2016 06:00:33 UTC] PHP Stack trace:
+[09-Jun-2016 06:00:33 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[09-Jun-2016 06:00:33 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\options-permalink.php:10
+[09-Jun-2016 06:00:33 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-admin\admin.php:31
+[09-Jun-2016 06:00:33 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 06:00:33 UTC] PHP   5. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 06:00:33 UTC] PHP   6. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 06:03:46 UTC] PHP Notice:  Undefined index: slug in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 120
+[09-Jun-2016 06:03:46 UTC] PHP Stack trace:
+[09-Jun-2016 06:03:46 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[09-Jun-2016 06:03:46 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[09-Jun-2016 06:03:46 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-header.php:214
+[09-Jun-2016 06:03:46 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   5. wp_admin_bar_render() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   6. do_action_ref_array() S:\wamp\www\draft\wp-includes\admin-bar.php:81
+[09-Jun-2016 06:03:46 UTC] PHP   7. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:601}() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 06:03:46 UTC] PHP   8. wp_admin_bar_my_account_menu() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 06:03:46 UTC] PHP   9. get_edit_profile_url() S:\wamp\www\draft\wp-includes\admin-bar.php:226
+[09-Jun-2016 06:03:46 UTC] PHP  10. apply_filters() S:\wamp\www\draft\wp-includes\link-template.php:3501
+[09-Jun-2016 06:03:46 UTC] PHP  11. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 06:03:46 UTC] PHP  12. OMC\User\Main->edit_profile_url() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 06:03:46 UTC] PHP Notice:  Undefined index: slug in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 98
+[09-Jun-2016 06:03:46 UTC] PHP Stack trace:
+[09-Jun-2016 06:03:46 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[09-Jun-2016 06:03:46 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[09-Jun-2016 06:03:46 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-header.php:214
+[09-Jun-2016 06:03:46 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   5. wp_admin_bar_render() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   6. do_action_ref_array() S:\wamp\www\draft\wp-includes\admin-bar.php:81
+[09-Jun-2016 06:03:46 UTC] PHP   7. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:601}() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 06:03:46 UTC] PHP   8. wp_admin_bar_my_account_menu() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 06:03:46 UTC] PHP   9. wp_logout_url() S:\wamp\www\draft\wp-includes\admin-bar.php:267
+[09-Jun-2016 06:03:46 UTC] PHP  10. apply_filters() S:\wamp\www\draft\wp-includes\general-template.php:318
+[09-Jun-2016 06:03:46 UTC] PHP  11. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 06:03:46 UTC] PHP  12. OMC\User\Main->logout_url() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 06:03:46 UTC] PHP Notice:  Undefined index: slug in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 120
+[09-Jun-2016 06:03:46 UTC] PHP Stack trace:
+[09-Jun-2016 06:03:46 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[09-Jun-2016 06:03:46 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[09-Jun-2016 06:03:46 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-header.php:214
+[09-Jun-2016 06:03:46 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   5. wp_admin_bar_render() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   6. do_action_ref_array() S:\wamp\www\draft\wp-includes\admin-bar.php:81
+[09-Jun-2016 06:03:46 UTC] PHP   7. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:601}() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 06:03:46 UTC] PHP   8. wp_admin_bar_my_account_item() S:\wamp\www\draft\wp-includes\plugin.php:601
+[09-Jun-2016 06:03:46 UTC] PHP   9. get_edit_profile_url() S:\wamp\www\draft\wp-includes\admin-bar.php:189
+[09-Jun-2016 06:03:46 UTC] PHP  10. apply_filters() S:\wamp\www\draft\wp-includes\link-template.php:3501
+[09-Jun-2016 06:03:46 UTC] PHP  11. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 06:03:46 UTC] PHP  12. OMC\User\Main->edit_profile_url() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 06:03:46 UTC] PHP Notice:  Undefined index: slug in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 98
+[09-Jun-2016 06:03:46 UTC] PHP Stack trace:
+[09-Jun-2016 06:03:46 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[09-Jun-2016 06:03:46 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:135
+[09-Jun-2016 06:03:46 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-header.php:214
+[09-Jun-2016 06:03:46 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   5. wp_admin_bar_render() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   6. WP_Admin_Bar->render() S:\wamp\www\draft\wp-includes\admin-bar.php:90
+[09-Jun-2016 06:03:46 UTC] PHP   7. WP_Admin_Bar->_render() S:\wamp\www\draft\wp-includes\class-wp-admin-bar.php:266
+[09-Jun-2016 06:03:46 UTC] PHP   8. wp_logout_url() S:\wamp\www\draft\wp-includes\class-wp-admin-bar.php:426
+[09-Jun-2016 06:03:46 UTC] PHP   9. apply_filters() S:\wamp\www\draft\wp-includes\general-template.php:318
+[09-Jun-2016 06:03:46 UTC] PHP  10. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 06:03:46 UTC] PHP  11. OMC\User\Main->logout_url() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 06:03:46 UTC] PHP Notice:  Undefined index: slug in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 87
+[09-Jun-2016 06:03:46 UTC] PHP Stack trace:
+[09-Jun-2016 06:03:46 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\options-permalink.php:0
+[09-Jun-2016 06:03:46 UTC] PHP   2. require() S:\wamp\www\draft\wp-admin\options-permalink.php:277
+[09-Jun-2016 06:03:46 UTC] PHP   3. do_action() S:\wamp\www\draft\wp-admin\admin-footer.php:74
+[09-Jun-2016 06:03:46 UTC] PHP   4. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:525}() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   5. wp_auth_check_html() S:\wamp\www\draft\wp-includes\plugin.php:525
+[09-Jun-2016 06:03:46 UTC] PHP   6. wp_login_url() S:\wamp\www\draft\wp-includes\functions.php:5024
+[09-Jun-2016 06:03:46 UTC] PHP   7. apply_filters() S:\wamp\www\draft\wp-includes\general-template.php:349
+[09-Jun-2016 06:03:46 UTC] PHP   8. call_user_func_array:{S:\wamp\www\draft\wp-includes\plugin.php:235}() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 06:03:46 UTC] PHP   9. OMC\User\Main->login_url() S:\wamp\www\draft\wp-includes\plugin.php:235
+[09-Jun-2016 07:32:07 UTC] PHP Fatal error:  Class 'Main' not found in S:\wamp\www\draft\wp-content\themes\omc\templates\user\index.php on line 3
+[09-Jun-2016 07:32:07 UTC] PHP Stack trace:
+[09-Jun-2016 07:32:07 UTC] PHP   1. {main}() S:\wamp\www\draft\index.php:0
+[09-Jun-2016 07:32:07 UTC] PHP   2. require() S:\wamp\www\draft\index.php:17
+[09-Jun-2016 07:32:07 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-blog-header.php:19
+[09-Jun-2016 07:32:07 UTC] PHP   4. include() S:\wamp\www\draft\wp-includes\template-loader.php:75
+[09-Jun-2016 07:36:52 UTC] PHP Fatal error:  Class 'Main' not found in S:\wamp\www\draft\wp-content\themes\omc\templates\user\index.php on line 4
+[09-Jun-2016 07:36:52 UTC] PHP Stack trace:
+[09-Jun-2016 07:36:52 UTC] PHP   1. {main}() S:\wamp\www\draft\index.php:0
+[09-Jun-2016 07:36:52 UTC] PHP   2. require() S:\wamp\www\draft\index.php:17
+[09-Jun-2016 07:36:52 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-blog-header.php:19
+[09-Jun-2016 07:36:52 UTC] PHP   4. include() S:\wamp\www\draft\wp-includes\template-loader.php:75
+[09-Jun-2016 07:40:09 UTC] PHP Fatal error:  Cannot redeclare OMC\User\Main::is_user_page() in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 178
+[09-Jun-2016 07:40:09 UTC] PHP Stack trace:
+[09-Jun-2016 07:40:09 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\admin-ajax.php:0
+[09-Jun-2016 07:40:09 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\admin-ajax.php:22
+[09-Jun-2016 07:40:09 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 07:40:09 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 07:40:09 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 07:42:10 UTC] PHP Fatal error:  Cannot redeclare OMC\User\Main::is_user_page() in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 179
+[09-Jun-2016 07:42:10 UTC] PHP Stack trace:
+[09-Jun-2016 07:42:10 UTC] PHP   1. {main}() S:\wamp\www\draft\wp-admin\admin-ajax.php:0
+[09-Jun-2016 07:42:10 UTC] PHP   2. require_once() S:\wamp\www\draft\wp-admin\admin-ajax.php:22
+[09-Jun-2016 07:42:10 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 07:42:10 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 07:42:10 UTC] PHP   5. include() S:\wamp\www\draft\wp-settings.php:369
+[09-Jun-2016 07:42:39 UTC] PHP Fatal error:  Cannot redeclare OMC\User\Main::is_user_page() in S:\wamp\www\draft\wp-content\themes\omc\inc\user\class-user.php on line 180
+[09-Jun-2016 07:42:39 UTC] PHP Stack trace:
+[09-Jun-2016 07:42:39 UTC] PHP   1. {main}() S:\wamp\www\draft\index.php:0
+[09-Jun-2016 07:42:39 UTC] PHP   2. require() S:\wamp\www\draft\index.php:17
+[09-Jun-2016 07:42:39 UTC] PHP   3. require_once() S:\wamp\www\draft\wp-blog-header.php:13
+[09-Jun-2016 07:42:39 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-load.php:37
+[09-Jun-2016 07:42:39 UTC] PHP   5. require_once() S:\wamp\www\draft\wp-config.php:160
+[09-Jun-2016 07:42:39 UTC] PHP   6. include() S:\wamp\www\draft\wp-settings.php:369

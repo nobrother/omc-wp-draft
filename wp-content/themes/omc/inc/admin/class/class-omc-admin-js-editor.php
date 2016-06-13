@@ -37,7 +37,6 @@ class OMC_JS_Editor_Settings extends OMC_File_Editor_Settings {
 	
 	// Compile js
 	function compile_js( $current_file ){
-		
 		if( 
 			is_menu_page( $this->page_id ) &&
 			!empty( $current_file ) &&

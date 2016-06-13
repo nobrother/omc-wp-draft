@@ -48,6 +48,13 @@
  * 50			- omc_last_scripts
  */
 
+/**
+ * Load js plugin
+ */
+add_action( 'wp_enqueue_scripts', 'omc_enqueue_js_plugin', 10 );
+function omc_enqueue_js_plugin() {
+	omc_load_bootstrap();
+} 
  
 /**
  * Helper function to load backbone
@@ -55,7 +62,10 @@
 function omc_load_backbone(){
 	wp_enqueue_script( 'underscore', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', array(), false, true );	
 	wp_enqueue_script( 'backbone', 'https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js', array(), false, true );	
+	wp_enqueue_script( 'backbone-validation', 'https://cdnjs.cloudflare.com/ajax/libs/backbone.validation/0.11.5/backbone-validation.js', array(), false, true );	
 }
+
+
 /**
  * Helper function to load froala editor
  */
@@ -462,15 +472,7 @@ function omc_enqueue_jquery() {
 	$url = site_url().'/wp-includes/js/jquery/jquery.js';
 	wp_deregister_script( 'jquery' );
 	wp_enqueue_script( 'jquery', $url, array(), false, true );
-}  
-
-/**
- * Load js plugin
- */
-add_action( 'wp_enqueue_scripts', 'omc_enqueue_js_plugin', 10 );
-function omc_enqueue_js_plugin() {
-	omc_load_bootstrap();
-}
+} 
 
 /**
  * Load theme scripts
