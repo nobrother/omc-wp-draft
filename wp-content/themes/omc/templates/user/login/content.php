@@ -7,12 +7,12 @@
 		<form id="form-login">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Username / Email address</label>
-				<input type="username" class="form-control" id="username" placeholder="Email">
+				<input type="text" name="username" class="form-control" id="username" placeholder="Email">
 				<span class="help-block hidden"></span>
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Password</label>
-				<input type="password" class="form-control" id="password" placeholder="Password">
+				<input type="text" name="password" class="form-control" id="password" placeholder="Password">
 				<span class="help-block hidden"></span>
 			</div>
 			
