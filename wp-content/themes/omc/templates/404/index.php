@@ -6,6 +6,4 @@ add_filter( 'omc_body_attribute', function( $attr ){
 
 get_header( '404' );
 
-
-
 get_footer( '404' );

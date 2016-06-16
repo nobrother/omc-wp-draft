@@ -112,6 +112,23 @@ function _s( $number = 0, $singular, $prural = '', $zero = '' ){
 		echo "$number $prural";
 	
 }
+
+/*
+ * Echo nonce field
+ */
+function omc_nonce_field( $action = '' ){ ?>
+	<input type="hidden" name="omc_nonce" value="<?php echo wp_create_nonce( $action ) ?>">
+	<input type="hidden" name="action" value="<?php esc_attr_e( $action ) ?>">
+<?php }
+
+/*
+ * Verify nonce
+ */
+function omc_verify_nonce( $action = '' ){ 
+	if( empty( $_POST['omc_nonce'] ) )
+		return false;
+	return wp_verify_nonce( $_POST['omc_nonce'], $action );
+}
  
 /*
  * Choose template to loader
@@ -132,7 +149,9 @@ function omc_template_loader( $template ){
 		case 'taxonomy': 
 		case 'search': 
 		case '404': 
-			return OMC_TEMPLATE_DIR."/$filter/index.php"; break;		
+			return OMC_TEMPLATE_DIR."/$filter/index.php"; break;
+		case 'attachment':
+			return OMC_TEMPLATE_DIR."/attachment/index.php"; break;
 		case 'single':
 		case 'singular':
 			return OMC_TEMPLATE_DIR."/singular/index.php"; break;

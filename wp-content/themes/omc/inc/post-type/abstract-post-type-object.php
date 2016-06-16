@@ -26,7 +26,7 @@ abstract class Post_Object {
 			return false;
 
 		// Get post object
-		$post = self::get_post_object_by_id( $id );		
+		$post = $this->get_post_object_by_id( $id );		
 
 		return $this->populate( $post );
 
@@ -35,7 +35,7 @@ abstract class Post_Object {
 	/*
 	 * Get post object by id
 	 */
-	static function get_post_object_by_id( $id = 0 ){		
+	function get_post_object_by_id( $id = 0 ){		
 		if( is_a( $id, 'WP_Post' ) )
 			return $id;
 		
@@ -85,7 +85,7 @@ abstract class Post_Object {
 		$meta = get_post_meta( $this->id, '', true );
 		
 		// Populate meta
-		foreach( self::get_default_meta() as $key => $value ){
+		foreach( $this->get_default_meta() as $key => $value ){
 			
 			if( isset( $meta[$key] ) ){
 
@@ -320,7 +320,7 @@ abstract class Post_Object {
 		wp_update_post( array( 'ID' => $post_id, 'menu_order' => static::get_max_menu_order() + 1	) );
 
 		// Default meta
-		$default_meta = static::get_default_meta();
+		$default_meta = $this->get_default_meta();
 
 		// Sanitize $meta
 		$meta = array_intersect_key( $meta, $default_meta );
@@ -337,7 +337,7 @@ abstract class Post_Object {
 		$id = static::_create( $meta, $args );
 		
 		// Get post object and populate
-		$post = static::get_post_object_by_id();		
+		$post = $this->get_post_object_by_id();		
 
 		return $this->populate( $post );
 	}
@@ -361,7 +361,7 @@ abstract class Post_Object {
 			throw new WP_Exception( $post_id );
 		
 		// Default meta
-		$default_meta = static::get_default_meta();
+		$default_meta = $this->get_default_meta();
 
 		// Sanitize $meta
 		$meta = array_intersect_key( $meta, $default_meta );

@@ -8,7 +8,7 @@ namespace OMC;
 abstract class Post_Object_Ajax{
 	
 	// Should define in child class
-	public $post_type;
+	// public $post_type;
 	protected $action_prefix;
 
 	/*
@@ -42,5 +42,33 @@ abstract class Post_Object_Ajax{
 	 */
 	protected function json_headers() {
 		header( 'Content-Type: application/json; charset=utf-8' );
+	}
+	
+	/**
+	 * Return exception result
+	 */
+	protected function error_result( $e ){
+		return array(
+			'status' => '0',
+			'error' => $e->getMessage(),
+		);
+	}
+	
+	/**
+	 * Echo result
+	 */
+	protected function return_result( $result = '' ){
+		
+		if( is_object( $result ) )
+			$result = (array) $result;
+		
+		if( is_array( $result ) ){
+			$this->json_headers();
+			echo json_encode( $result );
+		} else {
+			echo $result;
+		}
+		
+		die();
 	}
 }

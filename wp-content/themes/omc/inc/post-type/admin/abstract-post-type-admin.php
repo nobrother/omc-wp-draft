@@ -72,8 +72,32 @@ abstract class Post_Object_Metabox {
 	// Metabox settings html
 	function settings_html( $post ){ echo 'You forget to overide the settings html'; }
 	
-	// Metabox meta html
-	function meta_html( $post ){ echo 'You forget to overide the meta html'; }
+	/*
+	 * Metabox html
+	 */
+	function meta_html( $post ){
+		
+		wp_nonce_field( $this->metabox_meta_nonce_save_action, $this->metabox_meta_nonce_field );
+		
+		?>
+		<table class="widefat fixed-layout table-layout-label-content">
+			<tbody>
+				<?php foreach( $this->default_meta as $meta_key => $default_value ): ?>		
+				<tr>
+					<th><strong><?php esc_html_e( $meta_key ) ?></strong></th>
+					<td>
+						<input type="text" 
+							class="large-text" 
+							name="<?php esc_attr_e( $this->html_name( $meta_key ) ) ?>" 
+							value="<?php esc_attr_e( get_post_meta( $post->ID, $meta_key, true ) ) ?>" 
+						/>
+					</td>
+				</tr>
+				<?php endforeach ?>
+			</tbody>
+		</table>
+		<?php	
+	}
 	
 	/**
 	 * Save settings

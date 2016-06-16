@@ -15,20 +15,25 @@ $theme_config = array(
 			'inc/load-scripts/load-scripts.php',
 			'inc/load-scripts/load-styles.php',
 			'inc/router.php',
-			'inc/user/class-user.php',
+			
+			// User
+			'inc/user/main.php',
+			'inc/user/object.php',
+			
 			'inc/post-type/abstract-post-type-object.php',
 			'inc/post-type/abstract-post-type-custom-settings.php',			
 			'inc/post-type/page.php',
 			'inc/post-type/post.php',
 			'inc/post-type/post-hooks.php',
-			'inc/post-type/portfolio.php',			
+			'inc/post-type/portfolio.php',
+			'inc/post-type/attachment.php',
 			'inc/mainframe/mainframe.php',			
 		),
 		'frontend' => array(
 			'inc/structure/header.php',
-			'inc/structure/footer.php',
-			'templates/common/widgets/tags-cloud/tags-cloud.php',
-			'templates/common/comments/class-walker-comments.php',
+				'inc/structure/footer.php',
+				'templates/common/widgets/tags-cloud/tags-cloud.php',
+				'templates/common/comments/class-walker-comments.php',
 		),
 		'backend' => array(
 			'inc/admin/functions.php',
@@ -40,6 +45,7 @@ $theme_config = array(
 			'inc/post-type/admin/page.php',
 			'inc/post-type/admin/post.php',
 			'inc/post-type/admin/portfolio.php',
+			'inc/post-type/admin/attachment.php',
 			'inc/post-type/admin/admin.php',
 			'inc/taxonomy/admin/abstract-taxonomy.php',
 			'inc/taxonomy/admin/post_tag.php',
@@ -50,6 +56,9 @@ $theme_config = array(
 			'inc/post-type/page-ajax.php',
 			'inc/post-type/admin/page-ajax.php',
 			'inc/post-type/admin/portfolio-ajax.php',
+			
+			// User
+			'inc/user/ajax.php',
 		),
 	),
 );
