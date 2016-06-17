@@ -110,4 +110,5 @@ var apps = apps || {};
 			model: new loginModel()
 		});
 	});
+
 })(jQuery, window, Backbone, _, apps, info);
