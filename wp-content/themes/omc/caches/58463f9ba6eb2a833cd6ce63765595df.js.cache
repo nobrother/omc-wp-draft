@@ -1,4 +1,0 @@
-(function(global,doc,$){$(function(){$('body').on('click.scrollTo','[data-scroll-to]',function(e){var selector=$(this).data('scroll-to')||'',target=$(selector).first();if(target.length){e.preventDefault();target.scrollTo(500);}});(function(global,$){var $btn=$('#back-to-top'),topStart=$btn.length&&$btn.data('top-start')&&parseInt($btn.data('top-start'))||0;$(global).on('scroll',function(e){$btn.toggleClass('active',(topStart<$(this).scrollTop()));})})(global,$);});$(function(){$('body').on('click.post','.js-post-like',function(e){e.preventDefault();var self=$(this),post=self.closest('.js-post'),pid=post.data('id'),likeCount=post.find('.js-post-like-count'),likeCountVal=parseInt(likeCount.html())||0;if(!pid)
-return false;var data={'action':'omc_post_toggle_like','pid':pid}
-$.post(info.ajaxurl,data,function(response){});if(self.toggleClass('active').is('.active'))
-likeCount.html(++likeCountVal);else{likeCount.html(--likeCountVal);}});})})(window,document,jQuery);
