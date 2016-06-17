@@ -575,3 +575,24 @@ Stack trace:
 [09-Jun-2016 07:42:39 UTC] PHP   4. require_once() S:\wamp\www\draft\wp-load.php:37
 [09-Jun-2016 07:42:39 UTC] PHP   5. require_once() S:\wamp\www\draft\wp-config.php:160
 [09-Jun-2016 07:42:39 UTC] PHP   6. include() S:\wamp\www\draft\wp-settings.php:369
+[17-Jun-2016 06:38:08 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in D:\wamp64\www\draft\wp-includes\update.php on line 123
+[17-Jun-2016 06:38:08 UTC] PHP Stack trace:
+[17-Jun-2016 06:38:08 UTC] PHP   1. {main}() D:\wamp64\www\draft\wp-cron.php:0
+[17-Jun-2016 06:38:08 UTC] PHP   2. do_action_ref_array() D:\wamp64\www\draft\wp-cron.php:117
+[17-Jun-2016 06:38:08 UTC] PHP   3. call_user_func_array:{D:\wamp64\www\draft\wp-includes\plugin.php:601}() D:\wamp64\www\draft\wp-includes\plugin.php:601
+[17-Jun-2016 06:38:08 UTC] PHP   4. wp_version_check() D:\wamp64\www\draft\wp-includes\plugin.php:601
+[17-Jun-2016 06:38:08 UTC] PHP   5. trigger_error() D:\wamp64\www\draft\wp-includes\update.php:123
+[17-Jun-2016 06:38:08 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in D:\wamp64\www\draft\wp-includes\update.php on line 306
+[17-Jun-2016 06:38:08 UTC] PHP Stack trace:
+[17-Jun-2016 06:38:08 UTC] PHP   1. {main}() D:\wamp64\www\draft\wp-cron.php:0
+[17-Jun-2016 06:38:08 UTC] PHP   2. do_action_ref_array() D:\wamp64\www\draft\wp-cron.php:117
+[17-Jun-2016 06:38:08 UTC] PHP   3. call_user_func_array:{D:\wamp64\www\draft\wp-includes\plugin.php:601}() D:\wamp64\www\draft\wp-includes\plugin.php:601
+[17-Jun-2016 06:38:08 UTC] PHP   4. wp_update_plugins() D:\wamp64\www\draft\wp-includes\plugin.php:601
+[17-Jun-2016 06:38:08 UTC] PHP   5. trigger_error() D:\wamp64\www\draft\wp-includes\update.php:306
+[17-Jun-2016 06:38:08 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in D:\wamp64\www\draft\wp-includes\update.php on line 479
+[17-Jun-2016 06:38:08 UTC] PHP Stack trace:
+[17-Jun-2016 06:38:08 UTC] PHP   1. {main}() D:\wamp64\www\draft\wp-cron.php:0
+[17-Jun-2016 06:38:08 UTC] PHP   2. do_action_ref_array() D:\wamp64\www\draft\wp-cron.php:117
+[17-Jun-2016 06:38:08 UTC] PHP   3. call_user_func_array:{D:\wamp64\www\draft\wp-includes\plugin.php:601}() D:\wamp64\www\draft\wp-includes\plugin.php:601
+[17-Jun-2016 06:38:08 UTC] PHP   4. wp_update_themes() D:\wamp64\www\draft\wp-includes\plugin.php:601
+[17-Jun-2016 06:38:08 UTC] PHP   5. trigger_error() D:\wamp64\www\draft\wp-includes\update.php:479
