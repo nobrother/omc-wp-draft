@@ -1,1 +1,0 @@
-(function($,window,bb,_,apps){})(jQuery,window,Backbone,_,apps||{});
