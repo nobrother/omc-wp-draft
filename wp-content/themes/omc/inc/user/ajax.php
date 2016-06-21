@@ -26,6 +26,7 @@ class Ajax extends ajx{
 		
 		// Add action hook
 		$this->add_ajax( 'login' );		
+		$this->add_ajax( 'check_new_username' );		
 	}
 	
 	function login(){
@@ -48,6 +49,30 @@ class Ajax extends ajx{
 		
 		// Error handling
 		catch( e $e ){			
+			$this->return_result( $this->error_result( $e ) );			
+		} catch( Exception $e ){			
+			$this->return_result( $this->error_result( $e ) );
+		}
+	}
+	
+	function check_new_username(){
+		try{
+			
+			// Security check
+			if( empty( $_POST['value'] ) )
+				throw new e( 'check_new_username_fail', 'Does not provide username' );
+			
+			if( username_exists( $_POST['value'] ) )
+				throw new e( 'check_new_username_fail', 'Username exists.' );
+				
+			// Success
+			$this->return_result( array(
+				'status' => '1'
+			) );			
+		} 
+		
+		// Error handling
+		catch( e $e ){
 			$this->return_result( $this->error_result( $e ) );			
 		} catch( Exception $e ){			
 			$this->return_result( $this->error_result( $e ) );

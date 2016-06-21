@@ -1,61 +1,14 @@
 var apps = apps || {};
 
 (function($, window, bb, _, apps, info){
-	// Ajax setup
-	$.ajaxSetup({
-		url: info.ajaxurl,
-		type: 'POST',
-		success: function(responce){
-			console.log(responce);
-		},
-		error: function(xhr, status, error){
-			console.log(status + ': ' + error);
-		}
-	});	
 	
-	// Validation setup
-	_.extend(bb.Validation.callbacks, {
-		valid: function (view, attr, selector) {
-			var $el = view.$('[name=' + attr + ']'), 
-					$group = $el.closest('.form-group');
-
-			$group.removeClass('has-error');
-			$group.find('.help-block').html('').addClass('hidden');
-		},
-		invalid: function (view, attr, error, selector) {
-			var $el = view.$('[name=' + attr + ']'), 
-					$group = $el.closest('.form-group');
-
-			$group.addClass('has-error');
-			$group.find('.help-block').html(error).removeClass('hidden');
-		}
-	});
-
 	// Define a model with some validation rules
 	var loginModel = bb.Model.extend({
 		defaults:{
 			user_login: '',
 			user_password: ''
 		},
-		validation: {
-			user_login: [{
-				required: true,
-				msg: 'We need your username.'
-			},{
-				minLength: 3,
-				msg: 'At least 3 characters long.'
-			},{
-				maxLength: 60,
-				msg: 'Cannot more than 60 characters.'
-			}],
-			user_password: [{
-				required: true,
-				msg: 'We need your password as well.'
-			},{
-				minLength: 8,
-				msg: 'At least 8 characters long.'
-			}]
-		}
+		validation: apps.users.validationRules(['user_login', 'user_password'])
 	});
 
 	// Define a View that uses our model

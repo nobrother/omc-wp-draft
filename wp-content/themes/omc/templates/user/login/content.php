@@ -4,9 +4,9 @@
 			<h1>Login</h1>
 		</header>
 		
-		<form id="form-login">
-			<div class="form-group">
-				<?php omc_nonce_field( 'omc_user_login' ) ?>
+		<form class="user-form user-form-login" id="form-login">
+			<?php omc_nonce_field( 'omc_user_login' ) ?>
+			<div class="form-group">				
 				<label for="username">Username / Email address</label>
 				<input type="text" name="user_login" class="form-control" id="username" placeholder="Email">
 				<span class="help-block hidden"></span>
