@@ -81,8 +81,27 @@ var apps = apps || {};
 			// Check if the model is valid before saving
 			if(this.model.isValid(true)){
 				var data = $.extend({}, this.$el.serializeObject(), this.model.toJSON());
+				
+				apps.overlay.set('type', 'loading').show();
+				
 				$.ajax({
-					data: data					
+					data: data,
+					success: function(response){
+						console.log(response);
+						if('1' === response.status){
+							apps.overlay.set({type: 'bigText', text: 'You are in!'}).hide()
+							
+								// redirect
+								.view.$el.queue(function(){
+								if(response.redirect_to)
+									window.location = response.redirect_to;
+								$(this).dequeue();
+							});
+							
+						}
+						else
+							apps.overlay.set({type: 'bigText', text: response.error}).hide(300, 5000);
+					}
 				});
 			}
 		},

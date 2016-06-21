@@ -6,51 +6,40 @@
 	background-color: rgba(0,0,0,0.9);
 	z-index: 100000;
 	text-align: center;
-}
-
-.overlay > * {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.overlay:before{
-	content: '';
-	display: inline-block;
-	vertical-align: middle;
-	height: 100%;
-	width: 0;
-}
-
-.overlay .big-text {
-	color: #fff;
-	font-size: 100px;
-}
-
-.editor-settings{
-	&, select, input{
-		font-size: 12px;
+	
+	.overlay-content{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
 	}
 	
-	.btn-collapse{
-		cursor: pointer;
+	.layout-overlay-big-text,
+	.layout-overlay-loading{
+		.flexbox;
+		.flexbox-align-items(center);
+		.flex-justify-content(center);
+		width: 100%;
+		height: 100%;
 	}
 	
-	.collapse-wrap{
-		margin-bottom: 30px;
-		
-		> div {
-			margin-top: 12px;
-			label{
-				display: inline-block;
-				min-width: 70px;
-				padding-right: 12px;
-				vertical-align: middle;
-			}
-			
-			input{
-				border: 1px solid #ddd;
-				max-width: 50px;
-			}
+	.layout-overlay-big-text{
+		.big-text{
+			color: #fff;
+			font-size: 100px;
+			max-width: 80%;
+		}
+	}
+	
+	.layout-overlay-loading{
+		.loading{
+			color: #fff;
+			font-size: 80px;
+			max-width: 80%;
 		}
 	}
 }
