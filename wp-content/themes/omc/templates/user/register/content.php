@@ -18,7 +18,7 @@
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
-				<input type="text" name="user_password" class="form-control" id="password" placeholder="Password">
+				<input type="text" name="user_pass" class="form-control" id="password" placeholder="Password">
 				<span class="help-block hidden"></span>
 			</div>
 			

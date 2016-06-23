@@ -7,33 +7,52 @@ var apps = apps || {};
 		defaults:{
 			user_login: '',
 			user_email: '',
-			user_password: ''
+			user_pass: ''
 		},
 		validation: apps.users.validationRules(
-			['user_login','user_email', 'user_password'],
+			['user_login','user_email', 'user_pass'],
 			{
 				user_login: {
-					fn: function(value, attr, computedState){
-						if(value.length >= 3){
-							if(this.checkUsernameXhr)
-								this.checkUsernameXhr.abort();
-
-							this.checkUsernameXhr = $.ajax({
-								data: {
-									action: 'omc_user_check_new_username',
-									value: value
-								},
-								complete: function(){
-									
-								}
-							});
-						}
-						
-						if ('undefined' === typeof this.userExists || -1 === this.userExists) 
-							return " ";
-						else if (1 === this.userExists)
-							return "This username is taken, please pick another one.";
-					}
+					async: true,
+					msg: "This username is taken, please pick another one."	,
+					remote: function(value, attr, model, computed, deferred){
+						$.ajax({
+							data: {
+								action: 'omc_user_check_new_username',
+								value: value
+							},
+							success: function(response){
+								if("1" === response.status)
+									deferred.resolve();
+								else
+									deferred.reject();
+							},
+							error: function(){
+								deferred.reject();
+							}
+						});
+					}									
+				},
+				user_email: {
+					async: true,
+					msg: "This email is taken, please use another one."	,
+					remote: function(value, attr, model, computed, deferred){
+						$.ajax({
+							data: {
+								action: 'omc_user_check_new_email',
+								value: value
+							},
+							success: function(response){
+								if("1" === response.status)
+									deferred.resolve();
+								else
+									deferred.reject();
+							},
+							error: function(){
+								deferred.reject();
+							}
+						});
+					}									
 				}
 			}
 		)
@@ -43,7 +62,8 @@ var apps = apps || {};
 	var registerView = bb.View.extend({
 		events: {
 			'submit': 'submit',
-			'change #password': 'updateOnChanged',
+			'keyup #password': 'updateOnChanged',
+			'keyup #email': 'updateOnChanged',
 			'keyup #username': 'updateOnChanged'
 		},
 
@@ -51,10 +71,9 @@ var apps = apps || {};
 			// This hooks up the validation
 			bb.Validation.bind(this);
 			
-			this.listenTo(this.model, 'change:user_password', this.validate);
-			this.listenTo(this.model, 'change:user_login', this.validateUsername);
+			this.listenTo(this.model, 'change', this.validate);
 		},
-
+		
 		submit: function(e){
 			e.preventDefault();
 			this.register();
@@ -62,30 +81,41 @@ var apps = apps || {};
 		
 		register: function () {
 			// Check if the model is valid before saving
-			if(this.model.isValid(true)){
-				var data = $.extend({}, this.$el.serializeObject(), this.model.toJSON());
-				
+			var view = this;
+			if(view.xhr && view.xhr.state){
+				console.log(view.xhr.state);
+			}
+			
+			this.model.isValid(true, function(){
+
+				var data = $.extend({}, view.$el.serializeObject(), view.model.toJSON());
+
 				apps.overlay.set('type', 'loading').show();
-				
-				$.ajax({
+
+				view.xhr = $.ajax({
 					data: data,
 					success: function(response){
-						//console.log(response);
+						console.log(response);
 						if('1' === response.status){
 							apps.overlay.set({type: 'bigText', text: 'You are in!'}).hide()
-							
-								// redirect
+
+							// redirect
 								.view.$el.queue(function(){
 								if(response.redirect_to)
 									window.location = response.redirect_to;
 								$(this).dequeue();
 							});
-							
+
 						}
 						else
 							apps.overlay.set({type: 'bigText', text: response.error}).hide(300, 5000);
 					}
 				});
+			});
+			
+			return;
+			if(this.model.isValid(true)){
+				
 			}
 		},
 
@@ -100,7 +130,7 @@ var apps = apps || {};
 		validate: function(model){
 			if(model.changed){
 				$.each(model.changed, function(key, value){
-					model.isValid(key, true);
+					model.isValid(key);
 				})
 			}
 		},

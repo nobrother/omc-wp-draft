@@ -57,10 +57,13 @@ abstract class Post_Object_Ajax{
 	/**
 	 * Echo result
 	 */
-	protected function return_result( $result = '' ){
+	protected function return_result( $result = '', $show_POST = false ){
 		
 		if( is_object( $result ) )
 			$result = (array) $result;
+		
+		if( true === $show_POST )
+			$result['postdata'] = $_POST;
 		
 		if( is_array( $result ) ){
 			$this->json_headers();

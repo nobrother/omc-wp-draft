@@ -238,6 +238,50 @@ class Main{
 		
 		return new Object( $result );
 	}
+	
+	/*
+	 * Set Activation
+	 * Return activation link
+	 */
+	function set_activation( $user_id = 0 ){
+		$code = sha1( $user_id . time() );
+		$link = add_query_arg( 
+			array( 'key' => $code, 'user' => $user_id ), 
+			home_url( '/'.$this->pages['user_activation']['url'].'/' ) 
+		);
+		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
+		
+		return $link;
+	}
+	
+	/*
+	 * Action function: Register
+	 * return new user id
+	 */
+	static function register( $data = array() ){
+		
+		if ( !get_option('users_can_register') )
+			throw new e( 'register_fail', 'User is not allowed to register.' );
+		
+		// Process default
+		$default = array(
+			'user_email' => '',
+			'user_pass' => wp_generate_password( 12, false ),
+			'remember' => true,
+			'role' => 'pending',
+		);
+		(array) $data += $default;
+		//unset( $data['ID'] );
+
+    $user_id = wp_insert_user( $default );
+		if( is_wp_error( $user_id ) )
+			throw new e( $user_id );
+		
+		$this->set_activation( $user_id );
+		wp_mail( $data['user_email'], 'ACTIVATION SUBJECT', 'CONGRATS BLA BLA BLA. HERE IS YOUR ACTIVATION LINK: ' . $activation_link );
+		
+		return $user_id;
+	}
 }
 
 new Main();

@@ -145,8 +145,8 @@ if( WP_DEBUG ){
 /*
  * Block External URL Requests
  */
-define( 'WP_HTTP_BLOCK_EXTERNAL', true );
-define( 'WP_ACCESSIBLE_HOSTS', 'api.wordpress.org,*.github.com' );
+//define( 'WP_HTTP_BLOCK_EXTERNAL', true );
+//define( 'WP_ACCESSIBLE_HOSTS', '*.wordpress.org,*.github.com' );
 
 unset( $path, $wp_content, $plugins );
 

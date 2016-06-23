@@ -26,9 +26,14 @@ class Ajax extends ajx{
 		
 		// Add action hook
 		$this->add_ajax( 'login' );		
+		$this->add_ajax( 'register' );		
 		$this->add_ajax( 'check_new_username' );		
+		$this->add_ajax( 'check_new_email' );		
 	}
 	
+	/*
+	 * Login
+	 */
 	function login(){
 		
 		try{
@@ -55,6 +60,38 @@ class Ajax extends ajx{
 		}
 	}
 	
+	/*
+	 * Register
+	 */
+	function register(){
+		
+		try{
+			
+			// Security check
+			if( omc_verify_nonce( 'user_register' ) )
+				throw new e( 'register_fail', 'Security check fail.' );
+			
+			// Login
+			Main::register( $_POST );
+			
+			// Success
+			$this->return_result( array(
+				'status' => '1',
+				//'redirect_to' => home_url()
+			) );			
+		} 
+		
+		// Error handling
+		catch( e $e ){			
+			$this->return_result( $this->error_result( $e ), true );			
+		} catch( Exception $e ){			
+			$this->return_result( $this->error_result( $e ) );
+		}
+	}
+	
+	/*
+	 * Check new username
+	 */
 	function check_new_username(){
 		try{
 			
@@ -64,6 +101,37 @@ class Ajax extends ajx{
 			
 			if( username_exists( $_POST['value'] ) )
 				throw new e( 'check_new_username_fail', 'Username exists.' );
+				
+			// Success
+			$this->return_result( array(
+				'status' => '1'
+			) );			
+		} 
+		
+		// Error handling
+		catch( e $e ){
+			$this->return_result( $this->error_result( $e ) );			
+		} catch( Exception $e ){			
+			$this->return_result( $this->error_result( $e ) );
+		}
+	}
+	
+	/*
+	 * Check new email
+	 */
+	function check_new_email(){
+		try{
+			
+			// Variable check
+			if( empty( $_POST['value'] ) )
+				throw new e( 'check_new_email_fail', 'Does not provide email' );
+			
+			$email = $_POST['value'];
+			if( !is_email( $email ) )
+				throw new e( 'check_new_email_fail', '<'.$email.'> is not an email.' );
+			
+			if( email_exists( $email ) )
+				throw new e( 'check_new_username_fail', '<'.$email.'> has been used.' );
 				
 			// Success
 			$this->return_result( array(

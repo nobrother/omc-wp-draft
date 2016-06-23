@@ -62,7 +62,10 @@ function omc_enqueue_js_plugin() {
 function omc_load_backbone(){
 	wp_enqueue_script( 'underscore', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', array(), false, true );	
 	wp_enqueue_script( 'backbone', 'https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js', array(), false, true );	
-	wp_enqueue_script( 'backbone-validation', 'https://cdnjs.cloudflare.com/ajax/libs/backbone.validation/0.11.5/backbone-validation.js', array(), false, true );	
+	//wp_enqueue_script( 'backbone-validation', 'https://cdnjs.cloudflare.com/ajax/libs/backbone.validation/0.11.5/backbone-validation.js', array(), false, true );
+	//wp_enqueue_script( 'backbone-validation', OMC_JS_PLUGIN_URL.'/backbone-validation/backbone-validation.js', array(), false, true );
+	//wp_enqueue_script( 'backbone-async-validation', OMC_JS_PLUGIN_URL.'/async.backbone.validation/async.backbone.validation.js', array(), false, true );
+	wp_enqueue_script( 'backbone-validation-async', OMC_JS_PLUGIN_URL.'/backbone-validation-async/backbone-validation-async.js', array(), false, true );
 }
 
 
