@@ -4,17 +4,18 @@ use \WP_Exception as e;
 
 class Main{
 	
-	protected $pages = array();
+	protected static $pages = array();
+	protected static $need_activation = false;
 	
 	/*
-	 * Contruct
+	 * Initialize
 	 */
-	function __construct(){
+	static function init(){
 		
 		/**
 		 * Page info
 		 */
-		$this->pages = array(
+		self::$pages = array(
 			'user_login' => array(
 				'url' => 'login',
 			),
@@ -39,30 +40,30 @@ class Main{
 		);
 		
 		// Actions/Filters
-		add_filter( 'omc_custom_urls', array( $this, 'register_custom_urls' ) );
+		add_filter( 'omc_custom_urls', array( __CLASS__, 'register_custom_urls' ) );
 		
 		// restrict the backend access
-		add_action( 'show_admin_bar', array( $this, 'maybe_show_admin_bar' ) );
-		add_action( 'admin_init', array( $this, 'maybe_block_backend' ) );
+		add_action( 'show_admin_bar', array( __CLASS__, 'maybe_show_admin_bar' ) );
+		add_action( 'admin_init', array( __CLASS__, 'maybe_block_backend' ) );
 		
 		// wp titles
-		add_action( 'wp_title', array( $this, 'wp_title' ) );
+		add_action( 'wp_title', array( __CLASS__, 'wp_title' ) );
 		
 		// set up general hook
-		add_action( 'lostpassword_url', array( $this, 'lostpassword_url' ) );
-		add_action( 'register_url', array( $this, 'register_url' ) );
-		add_action( 'login_url', array( $this, 'login_url' ), 10, 2 );
-		add_action( 'logout_url', array( $this, 'logout_url' ), 10, 2 );
-		add_action( 'edit_profile_url', array( $this, 'edit_profile_url' ) );
+		add_action( 'lostpassword_url', array( __CLASS__, 'lostpassword_url' ) );
+		add_action( 'register_url', array( __CLASS__, 'register_url' ) );
+		add_action( 'login_url', array( __CLASS__, 'login_url' ), 10, 2 );
+		add_action( 'logout_url', array( __CLASS__, 'logout_url' ), 10, 2 );
+		add_action( 'edit_profile_url', array( __CLASS__, 'edit_profile_url' ) );
 		
 		// Filters
-		add_filter( 'auth_cookie_expiration', array( $this, 'stay_login' ), 10, 3 );
+		add_filter( 'auth_cookie_expiration', array( __CLASS__, 'stay_login' ), 10, 3 );
 	}
 	
 	/*
 	 * Set login expiration
 	 */
-	function stay_login( $expiration, $user_id, $remember ){
+	static function stay_login( $expiration, $user_id, $remember ){
 		if( !$remember )
 			return $expiration;
 		
@@ -72,9 +73,9 @@ class Main{
 	/*
 	 * Register custom_urls
 	 */
-	function register_custom_urls( $urls ){
+	static function register_custom_urls( $urls ){
 	
-		foreach( $this->pages as $page_id => $info ){
+		foreach( self::$pages as $page_id => $info ){
 			$urls[$page_id] = array(
 				'url' => $info['url'],
 				'group' => 'omc_user',
@@ -87,51 +88,51 @@ class Main{
 	/*
 	 * Filter: Login url
 	 */
-	function login_url( $login_url, $redirect ){
+	static function login_url( $login_url, $redirect ){
 		return add_query_arg( 
 			'redirect_to',
 			$redirect,
-			home_url( '/'.$this->pages['user_login']['url'].'/' ) 
+			home_url( '/'.self::$pages['user_login']['url'].'/' ) 
 		);
 	}
 	
 	/*
 	 * Filter: Logout url
 	 */
-	function logout_url( $logout_url, $redirect ){
+	static function logout_url( $logout_url, $redirect ){
 		return add_query_arg( 
 			'redirect_to',
 			$redirect,
-			home_url( '/'.$this->pages['user_logout']['url'].'/' )
+			home_url( '/'.self::$pages['user_logout']['url'].'/' )
 		);
 	}
 	
 	/*
 	 * Filter: Register url
 	 */
-	function register_url( $register_url ){
-		return home_url( '/'.$this->pages['user_register']['url'].'/' );
+	static function register_url( $register_url ){
+		return home_url( '/'.self::$pages['user_register']['url'].'/' );
 	}
 	
 	/*
 	 * Filter: Lost password url
 	 */
-	function lostpassword_url( $lostpassword_url ){
-		return home_url( '/'.$this->pages['user_lostpassword']['url'].'/' );
+	static function lostpassword_url( $lostpassword_url ){
+		return home_url( '/'.self::$pages['user_lostpassword']['url'].'/' );
 	}
 	
 	/*
 	 * Filter: Edit profile url
 	 */
-	function edit_profile_url( $edit_profile_url ){
-		return home_url( '/'.$this->pages['user_edit_profile']['url'].'/' );
+	static function edit_profile_url( $edit_profile_url ){
+		return home_url( '/'.self::$pages['user_edit_profile']['url'].'/' );
 	}
 	
 	/**
 	 * Determinates if a user has the
 	 * capabilities to see the admin bar.
 	 */
-	public function maybe_show_admin_bar( $is_show ) {
+	static public function maybe_show_admin_bar( $is_show ) {
 		return current_user_can( 'edit_posts' ) && $is_show;
 	}
 	
@@ -139,7 +140,7 @@ class Main{
 	 * Checks if the current request should be
 	 * redirected to the frontend.
 	 */
-	function maybe_block_backend() {
+	static function maybe_block_backend() {
 		
 		// If no user login
 		if( !is_user_logged_in() )
@@ -165,7 +166,7 @@ class Main{
 	/*
 	 * Manage page title
 	 */
-	function wp_title( $title ){
+	static function wp_title( $title ){
 		if ( get_query_var( 'omc_custom_page' ) != 1 )
 			return $title;
 		
@@ -243,11 +244,11 @@ class Main{
 	 * Set Activation
 	 * Return activation link
 	 */
-	function set_activation( $user_id = 0 ){
+	static function set_activation( $user_id = 0 ){
 		$code = sha1( $user_id . time() );
 		$link = add_query_arg( 
 			array( 'key' => $code, 'user' => $user_id ), 
-			home_url( '/'.$this->pages['user_activation']['url'].'/' ) 
+			home_url( '/'.self::$pages['user_activation']['url'].'/' ) 
 		);
 		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
 		
@@ -273,15 +274,35 @@ class Main{
 		(array) $data += $default;
 		//unset( $data['ID'] );
 
-    $user_id = wp_insert_user( $default );
+    $user_id = wp_insert_user( $data );
 		if( is_wp_error( $user_id ) )
 			throw new e( $user_id );
 		
-		$this->set_activation( $user_id );
-		wp_mail( $data['user_email'], 'ACTIVATION SUBJECT', 'CONGRATS BLA BLA BLA. HERE IS YOUR ACTIVATION LINK: ' . $activation_link );
+		// TODO: Send activation email after registration
+		if( self::$need_activation ){
+			$activation_link = self::set_activation( $user_id );
+			wp_mail( $data['user_email'], 'Activate your account', 'This is your activation link: <a href=">'.$activation_link.'">'.$activation_link.'</a>' );
+		}
+		
+		// TODO: Send regular email after registration
+		else {
+			
+			
+		}
+		
+
+		// Login if no need activation
+		if( !self::$need_activation ){
+			$credentials = array(
+				'user_login' => $data['user_login'],
+				'user_password' => $data['user_pass'],
+				'remember' => true,
+			);
+			Main::login( $credentials );
+		}
 		
 		return $user_id;
 	}
 }
 
-new Main();
+Main::init();

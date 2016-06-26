@@ -71,8 +71,8 @@ class Ajax extends ajx{
 			if( omc_verify_nonce( 'user_register' ) )
 				throw new e( 'register_fail', 'Security check fail.' );
 			
-			// Login
-			Main::register( $_POST );
+			// Register
+			$user_id = Main::register( $_POST );
 			
 			// Success
 			$this->return_result( array(

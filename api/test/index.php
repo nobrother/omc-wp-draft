@@ -7,11 +7,9 @@ define( 'DOING_API', true );
 require_once( '../../wp-load.php' );
 
 $data = array(
-	'user_email' => "chang@ohmycode.coma",
-	'user_login' => "asdasd",
-	'user_pass' => "sasfasfasf"
+	'user_login' => 'abc',
+	'user_email' => 'abc@abc.com',
+	'user_pass' => 'sadkldkfjajf',
 );
-
-$result = Main::register( $data );
-var_dump($data);
+Main::register($data);
 die();
