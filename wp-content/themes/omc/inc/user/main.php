@@ -208,7 +208,7 @@ class Main{
 		// Process default
 		$default = array(
 			'user_login' => '',
-			'user_password' => '',
+			'user_password' => isset( $credentials['user_pass'] ) ? $credentials['user_pass'] : '',
 			'remember' => true,
 		);
 		(array) $credentials += $default;
@@ -269,7 +269,7 @@ class Main{
 			'user_email' => '',
 			'user_pass' => wp_generate_password( 12, false ),
 			'remember' => true,
-			'role' => 'pending',
+			'role' => 'subscriber',
 		);
 		(array) $data += $default;
 		//unset( $data['ID'] );
@@ -291,7 +291,7 @@ class Main{
 		}
 		
 
-		// Login if no need activation
+		// Login straight if no need activation
 		if( !self::$need_activation ){
 			$credentials = array(
 				'user_login' => $data['user_login'],

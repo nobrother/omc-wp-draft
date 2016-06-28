@@ -70,7 +70,6 @@ var apps = apps || {};
 		initialize: function () {
 			// This hooks up the validation
 			bb.Validation.bind(this);
-			
 			this.listenTo(this.model, 'change', this.validate);
 		},
 		
@@ -162,10 +161,13 @@ var apps = apps || {};
 	});
 
 	$(function () {
-		var view = new registerView({
-			el: '#form-register',
-			model: new registerModel()
-		});
+		// Load the apps if the form exists
+		if($('#form-register').length){
+			var view = new registerView({
+				el: '#form-register',
+				model: new registerModel()
+			});
+		}
 	});
 
 })(jQuery, window, Backbone, _, apps, info);

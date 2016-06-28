@@ -7,13 +7,13 @@
 		<form class="user-form user-form-login" id="form-login">
 			<?php omc_nonce_field( 'omc_user_login' ) ?>
 			<div class="form-group">				
-				<label for="username">Username / Email address</label>
-				<input type="text" name="user_login" class="form-control" id="username" placeholder="Email">
+				<label for="username">Username / Email</label>
+				<input type="text" name="user_login" class="form-control" id="username" placeholder="Username / Email">
 				<span class="help-block hidden"></span>
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
-				<input type="text" name="user_password" class="form-control" id="password" placeholder="Password">
+				<input type="text" name="user_pass" class="form-control" id="password" placeholder="Password">
 				<span class="help-block hidden"></span>
 			</div>
 			<div class="form-group">				

@@ -56,8 +56,8 @@ var apps = apps || {};
 	
 	apps.users = {
 		
-		// Validation Rules
 		validationRules: (function(){
+			
 			var rules = {
 				user_login: [{
 					required: true,
@@ -80,13 +80,21 @@ var apps = apps || {};
 					required: true,
 					msg: 'We need your password as well.'
 				},{
-					minLength: 8,
-					msg: 'At least 8 characters long.'
+					minLength: 6,
+					msg: 'At least 6 characters long.'
+				},{
+					maxLength: 60,
+					msg: 'Cannot more than 60 characters.'
 				}]
-			}
+			};
 
 			return function(attributes, extend){
-				var output = attributes && $.isArray(attributes) && _.pick(rules, attributes) || {};
+				var attributes = _.isString(attributes) && [attributes] || false,
+						output = attributes && $.isArray(attributes) && _.pick(rules, attributes) || rules;
+
+				// Clone
+				output = JSON.parse(JSON.stringify(output));
+
 				if(extend){
 					$.each(extend, function(key, value){
 						if('undefined' === typeof output[key])
@@ -96,17 +104,16 @@ var apps = apps || {};
 								$.each(value, function(index, value){
 									output[key].push(value);
 								})
-							else
-								output[key].push(value);
+								else
+									output[key].push(value);
 						}
 						else
 							output[key] = [value];
 					});
 				}
-				
 				return output;
 			}
 		})()
-	};
+	}
 
 })(jQuery, window, Backbone, apps, _);

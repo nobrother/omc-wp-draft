@@ -6,9 +6,9 @@ var apps = apps || {};
 	var loginModel = bb.Model.extend({
 		defaults:{
 			user_login: '',
-			user_password: ''
+			user_pass: ''
 		},
-		validation: apps.users.validationRules(['user_login', 'user_password'])
+		validation: apps.users.validationRules(['user_login', 'user_pass'], false)
 	});
 
 	// Define a View that uses our model
@@ -32,7 +32,7 @@ var apps = apps || {};
 		
 		login: function () {
 			// Check if the model is valid before saving
-			if(this.model.isValid(true)){
+			if(this.model.isValid()){
 				var data = $.extend({}, this.$el.serializeObject(), this.model.toJSON());
 				
 				apps.overlay.set('type', 'loading').show();
@@ -70,17 +70,20 @@ var apps = apps || {};
 		validate: function(model){
 			if(model.changed){
 				$.each(model.changed, function(key, value){
-					model.isValid(key, true);
+					model.isValid(key);
 				})
 			}
 		}
 	});
 
 	$(function () {
-		var view = new loginView({
-			el: '#form-login',
-			model: new loginModel()
-		});
+		// Load the apps if the form exists
+		if($('#form-login').length){
+			var view = new loginView({
+				el: '#form-login',
+				model: new loginModel()
+			});
+		}
 	});
 
 })(jQuery, window, Backbone, _, apps, info);
