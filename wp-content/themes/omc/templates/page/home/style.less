@@ -4,6 +4,10 @@
 		max-width: roundup(934px, @hbase-unit);
 		.Row > .setGutter(roundup(45px, @hbase-unit));
 	}
+	
+	.do() when(@device = mobile){
+			background-color: tomato;
+	}.do();
 }
 
 #home-block-intro{

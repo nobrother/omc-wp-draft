@@ -1,17 +1,14 @@
 /*====================
  * MISCELLANEOUS
  *====================*/
-.Miscellaneous(){
-	.avoid-clicks {
-		pointer-events: none;
-	}
+.avoid-clicks() {
+	pointer-events: none;
 }
-
 
 /*====================
  * FLEXBOX
  *====================*/
-.flexbox {
+.flexbox() {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -50,14 +47,8 @@
 }
 
 /*====================
- * TYPOGRAPHY
+ * Anchor
  *====================*/
-.Typography(){
-	h1,h2,h3,h4,h5,h6 {
-		margin: 0;
-	}
-}
-
 .a-color(@normal, @hover, @focus, @active){
 	color: @normal;
 	&:hover{ color: @hover; }
@@ -72,65 +63,6 @@
 }
 .a-color(@normal){
 	.a-color(@normal, @normal, @normal, @normal);
-}
-
-/*====================
- * BUTTON
- *====================*/
-.button-variant(@color; @background; @border) {
-  color: @color;
-  background-color: @background;
-  border-color: @border;
-
-  &:focus,
-  &.focus {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 25%);
-  }
-  &:hover {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 12%);
-  }
-  &:active,
-  &.active,
-  .open > .dropdown-toggle& {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 12%);
-
-    &:hover,
-    &:focus,
-    &.focus {
-      color: @color;
-      background-color: darken(@background, 17%);
-          border-color: darken(@border, 25%);
-    }
-  }
-  &:active,
-  &.active,
-  .open > .dropdown-toggle& {
-    background-image: none;
-  }
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    &,
-    &:hover,
-    &:focus,
-    &.focus,
-    &:active,
-    &.active {
-      background-color: @background;
-          border-color: @border;
-    }
-  }
-
-  .badge {
-    color: @background;
-    background-color: @color;
-  }
 }
 
 /*====================
@@ -158,60 +90,20 @@
 }
 
 /*====================
- * VERTICAL ALIGN: MIDDLE
- *====================*/
-.inline-block-vertical-align-middle-with-fix-height() {
-
-	white-space: nowrap;
-
-	// Work arround the fuck up white space problem
-	font-family: monospace !important;
-	letter-spacing: -0.65em !important;
-
-	> * {
-		/*
-		* Recover back the fuck up work arround
-		* You need to put back the font family
-		* Assume is @fn-body
-		*/
-		font-family: @fn-body;
-		letter-spacing: normal;
-
-		display: inline-block !important;
-		float: none !important;
-		vertical-align: middle;
-		white-space: normal;
-	}
-
-	&:before {
-		content: '';
-		display: inline-block;
-		vertical-align: middle;
-		height: 100%;
-		width: 0;
-	}
-}
-
-/*====================
  * CONTAINER
  *====================*/
 .container(@width, @padding){
 	padding: 0 @padding;
 	width: 100%;
-	max-width: roundup(@width, @hbase-unit) + 2*@padding;
+	max-width: @width + 2*@padding;
 }
 
-/*====================
- * LAYOUT
- *====================*/
-.Layout(){
-	.container {
-		// Reset bootstrap
-		padding-left: 0;
-		padding-right: 0;
-	}
+.container-left(@width, @padding, @indent) when (ispercentage(@indent)){
+	margin-left: @indent;
+	padding: 0 @padding;
+	width: 100% - @indent;
+	max-width: @width + 2*@padding;
 }
-
 
 /*====================
  * LIST
@@ -220,6 +112,7 @@
 	
 	.ul,.ol {
 		padding: 0 0 0 3*@base-unit;
+		list-style: none;
 		li { padding: 0 0 0 @base-unit; }
 	}
 	
@@ -588,7 +481,6 @@
 	
 	.block {
 		margin-bottom: 0 * @base-unit;
-
 		&:last-child { margin-bottom: 0;}
 
 		.container {
@@ -600,10 +492,6 @@
 		}
 	}
 
-	.block-head {
-
-	}
-
 	.block-head-image {
 		.block-content {
 			background-size: cover;
@@ -612,21 +500,13 @@
 
 		color: #fff;
 	}
-
-
+	
 	.block-colored {
 		.block-content {  padding: 10*@base-unit 0 14*@base-unit; }
 	}
-
-
+	
 	.block-header {
 		margin-bottom: 10*@base-unit;
-	}
-	
-	.single-inline-block-vertical-middle-wrap {
-		height: 100%;
-		text-align: center;
-		.inline-block-vertical-align-middle-with-fix-height();
 	}
 }
 
@@ -646,6 +526,7 @@
 			left: 0;
 		}
 	}
+	
 	.r4-3 {
 		padding-top: 75%;
 	}
@@ -660,11 +541,10 @@
 	}
 }
 
-
 /*=================
  * NAV
  *=================*/
-.Nav(){
+.Nav-bootstrap(){
 	.navbar-center {
 
 		text-align: center;
@@ -679,7 +559,6 @@
 /*=================
  * BUTTONS
  *=================*/
-
 .Btn(){
 	
 	.set(@color; @background; @border) {
@@ -744,60 +623,6 @@
 		font-size: @font-size;
 		line-height: @line-height;
 		border-radius: @border-radius;
-	}
-	
-	/*--------------------
-	* Button with state
-	*-------------------*/
-	.btn-state{
-
-		position: relative;
-		overflow: hidden;
-
-		.placeholder {
-			visibility: hidden;
-		}
-
-		.state {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: -100%;
-			left: 0;
-			opacity: 0;
-			-webkit-transition: all 500ms ease-out;
-			-moz-transition: all 500ms ease-out;
-			-o-transition: all 500ms ease-out;
-			transition: all 500ms ease-out;
-
-			&.current {
-				top: 0;
-				opacity: 1;
-			}
-		}
-	}
-}
-
-/*=================
- * DIVIDER
- *=================*/
-.Divider(){
-	.divider {
-		margin: auto;
-		background-color: #555;
-		height: 1px; 
-	}
-}
-
-
-/*=================
- * FEATURES
- *=================*/
-.Feature(){
-	.feature{
-		&:last-child {
-			margin-bottom: 0 !important;
-		}
 	}
 }
 

@@ -117,7 +117,7 @@ function _s( $number = 0, $singular, $prural = '', $zero = '' ){
  * Echo nonce field
  */
 function omc_nonce_field( $action = '' ){ ?>
-	<input type="hidden" name="omc_nonce" value="<?php echo wp_create_nonce( $action ) ?>">
+	<input type="hidden" name="omc_nonce" value="<?php echo wp_create_nonce( sha1( $action.Cookie::Get( 'unique_user_id' ) ) ) ?>">
 	<input type="hidden" name="action" value="<?php esc_attr_e( $action ) ?>">
 <?php }
 
@@ -127,7 +127,7 @@ function omc_nonce_field( $action = '' ){ ?>
 function omc_verify_nonce( $action = '' ){ 
 	if( empty( $_POST['omc_nonce'] ) )
 		return false;
-	return wp_verify_nonce( $_POST['omc_nonce'], $action );
+	return wp_verify_nonce( $_POST['omc_nonce'], sha1( $action.Cookie::Get( 'unique_user_id' ) ) );
 }
  
 /*

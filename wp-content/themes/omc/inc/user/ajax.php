@@ -77,7 +77,7 @@ class Ajax extends ajx{
 			// Success
 			$this->return_result( array(
 				'status' => '1',
-				//'redirect_to' => home_url()
+				'redirect_to' => Main::get( 'need_activation' ) ? false : home_url()
 			) );			
 		} 
 		

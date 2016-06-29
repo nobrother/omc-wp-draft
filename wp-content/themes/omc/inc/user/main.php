@@ -31,12 +31,12 @@ class Main{
 			'user_activation' => array(
 				'url' => 'activation',
 			),
-			'user_edit_profile' => array(
-				'url' => 'account',
-			),
-			'user_edit_password' => array(
+			'user_change_password' => array(
 				'url' => 'account/password',
 			),
+			'user_edit_profile' => array(
+				'url' => 'account',
+			),			
 		);
 		
 		// Actions/Filters
@@ -58,6 +58,15 @@ class Main{
 		
 		// Filters
 		add_filter( 'auth_cookie_expiration', array( __CLASS__, 'stay_login' ), 10, 3 );
+	}
+	
+	/*
+	 * Helper function to access class property
+	 */
+	static function get( $property ){
+		if( property_exists( get_called_class(), $property ) )
+			return self::${$property};
+		throw new e( 'invalid_property_request_in_'.__class__, 'Property <'.$property.'> does not exists' );
 	}
 	
 	/*
