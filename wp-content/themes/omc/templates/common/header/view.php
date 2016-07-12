@@ -4,7 +4,11 @@
  */
 
 // Load fonts
+load_external_font( 'fa', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css' );
 load_external_font( 'source-san-pro', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,700italic' );
+load_external_font( 'montserrat', 'https://fonts.googleapis.com/css?family=Montserrat:400,700' );
+load_external_font( 'open-san', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' );
+load_external_font( 'fh', OMC_FONTS_URL.'/font-heads/font-heads.css' );
 
 // Load scripts
 add_action( 'wp_enqueue_scripts', 'omc_load_backbone' );
@@ -24,33 +28,19 @@ add_action( 'wp_enqueue_scripts', 'omc_load_backbone' );
 		wp_head(); 
 
 		do_action( 'omc_after_head' );
-
-		// Load top script
-		echo eval( '?>' . omc_get_option( 'top_script' ) . '<?php ' );
 	?>
+	
+	<!-- Google Analytic -->
+	<?php if( !is_user_logged_in() ) { ?>
+	<script>
+		// Put Google analytic snippet here
+	</script>
+	<?php } ?>
+	<!-- // Google Analytic -->
 
 </head>
 
 <body <?php echo apply_filters( 'omc_body_attribute', '' ); ?>>
-	
-	<!-- Facebook snippet --
-	<div id="fb-root"></div>
-	<script>
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId      : '1158888177478090',
-				xfbml      : true,
-				version    : 'v2.5'
-			});
-		};
-		(function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));</script>
-	<!-- / Facebook snippet -->	
 	
 	<?php 
 		// Usually we put facebook snippet here

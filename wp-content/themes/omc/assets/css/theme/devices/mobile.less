@@ -2,23 +2,26 @@
 @device: mobile;
 
 // Load mixin
-.List();
+.Reset();
 .Row();
-.RatioWrap();
-.Block();
+.List();
+.Features();
 .Cards();
 .Site();
 
 /*====================
 * GRID
 *====================*/
-.row, .row-inline-block, .row-flexbox{
-	display: block!important;
-	
-	// Cannot use gutter in mobile device
-	margin-left: 0!important;
-	margin-right: 0!important;
-	> div {
-		padding: 0 0!important;
+.row-inline-block, .row-flexbox{
+	&:not(.mobile){
+		display: block!important;
+		
+		// Cannot use gutter in mobile device
+		margin-right: 0!important;
+		> div {
+			display: block!important;
+			padding-right: 0!important;
+			width: auto;
+		}
 	}
 }

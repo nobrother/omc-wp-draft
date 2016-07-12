@@ -3,12 +3,13 @@ global $theme_config;
 
 $theme_config = array(
 	'loader' => array(
-		'general' => array( 
+		'general' => array(
 			'inc/constants.php',
 			'inc/functions/general.php',
 			'inc/functions/options.php',
 			'inc/functions/formatting.php',
 			'inc/functions/html-helper.php',
+			'inc/optimization.php',
 			'inc/functions/general-template.php',
 			'inc/class/class-wp-exception.php',
 			'inc/class/class-omc-cpt.php',

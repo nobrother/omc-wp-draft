@@ -42,9 +42,6 @@
  */
 add_action( 'wp_enqueue_scripts', 'omc_enqueue_fonts', 1 );
 function omc_enqueue_fonts(){
-	omc_load_fontawesome();
-	//omc_load_opensans();
-	
 	// Add extra fonts
 	do_action( 'omc_enqueue_fonts' );
 }
@@ -54,8 +51,6 @@ function omc_enqueue_fonts(){
  */
 add_action( 'wp_enqueue_scripts', 'omc_enqueue_theme_stylesheet', 20 );
 function omc_enqueue_theme_stylesheet() {
-	wp_enqueue_style( 'omc-style', get_stylesheet_uri() );
-	
 	if( is_tablet() )
 		wp_enqueue_style( 'omc-tablet', omc_theme_css_path_url( 'tablet', 'url' ) );
 	else if( is_mobile() )
@@ -128,18 +123,22 @@ function load_external_font( $handler = '', $url = '' ){
 		return false;
 	}
 	
-	add_action( 'omc_enqueue_fonts', function() use( $handler, $url ){
-		wp_enqueue_style( $handler, $url );
-	} );
+	add_action( 'omc_embed_script', function() use ( $handler, $url ){ ?>
+		<script>
+			(function(d){
+				var head  = document.getElementsByTagName('head')[0];
+				var link  = document.createElement('link');
+				link.id   = 'font-<?php esc_attr_e( $handler ) ?>';
+				link.rel  = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '<?php echo $url ?>';
+				link.media = 'all';
+				head.appendChild(link);
+			})(document);
+		</script>
+	<?php } );
 	
 	return true;
-} 
-
-/**
- * Helper function to load font awesome
- */
-function omc_load_fontawesome(){
-	wp_enqueue_style( 'fa', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css' );	
 }
 
 /**
