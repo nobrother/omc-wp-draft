@@ -71,6 +71,10 @@ class lessc {
 		
 		if ($this->fileExists($url))
 			return $url;
+		// TODO: 
+		if( $this->fileExists( OMC_CSS_THEME_DIR.'/'.$url ) )
+			return OMC_CSS_THEME_DIR.'/'.$url;
+		
 		foreach ((array)$this->importDir as $dir) {
 			$full = $dir.(substr($dir, -1) != '/' ? '/' : '').$url;
 			if ($this->fileExists($file = $full.'.less') || $this->fileExists($file = $full)) {

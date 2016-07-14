@@ -1,0 +1,98 @@
+/*====================
+ * MISCELLANEOUS
+ *====================*/
+.avoid-clicks() {
+	pointer-events: none;
+}
+.last-margin-bottom-zero(){
+	&:last-child{ margin-bottom: 0; }
+}
+.last-margin-bottom-zero(@value){
+	margin-bottom: @value;
+	.last-margin-bottom-zero();
+}
+.absolute-center(){
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+} 
+
+
+/*====================
+ * BOX SHADOW
+ *====================*/
+.box-shadow(@shadow) {
+	-webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+	box-shadow: @shadow;
+}
+
+/*====================
+ * BORDER RADIUS
+ *====================*/
+.border-radius(@value){
+	-webkit-border-radius: @value;
+	-moz-border-radius: @value;
+	border-radius: @value;
+}
+
+/*====================
+ * ELLIPSIS
+ *====================*/
+.ellipsis(@no-of-line, @line-height) {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	position: relative;
+	text-overflow: ellipsis;
+	white-space: normal;
+	word-wrap: break-word;
+
+	-webkit-line-clamp: @no-of-line;
+	max-height: @line-height * @no-of-line;
+}
+
+/*====================
+ * Background Cover
+ *====================*/
+.background-cover(){
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/*====================
+ * Transition
+ *====================*/
+.transition(@transition) {
+	-webkit-transition: @transition;
+	-o-transition: @transition;
+	transition: @transition;
+}
+
+/*====================
+ * Hyphens - word break
+ *====================*/
+.hyphens(@mode: auto) {
+	word-wrap: break-word;
+	-webkit-hyphens: @mode;
+	-moz-hyphens: @mode;
+	-ms-hyphens: @mode; // IE10+
+	-o-hyphens: @mode;
+	hyphens: @mode;
+}
+
+/*====================
+ * Placeholder
+ *====================*/
+.placeholder(@color: #ccc) {
+  // Firefox
+  &::-moz-placeholder {
+    color: @color;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder { color: @color; } // Internet Explorer 10+
+  &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+}

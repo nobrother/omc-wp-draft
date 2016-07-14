@@ -53,7 +53,7 @@
  */
 add_action( 'wp_enqueue_scripts', 'omc_enqueue_js_plugin', 10 );
 function omc_enqueue_js_plugin() {
-	omc_load_bootstrap();
+	//omc_load_bootstrap();
 } 
  
 /**

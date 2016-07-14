@@ -1,0 +1,36 @@
+/*====================
+ * Anchor
+ *====================*/
+.a-color(@normal, @hover, @focus, @active){
+	color: @normal;
+	&:hover{ color: @hover; }
+	&:focus{ color: @focus; }
+	&:active, &:active:focus{ color: @active; }
+	&:visited{ color: @normal; }
+}
+.a-color(@normal, @hover, @focus){
+	.a-color(@normal, @hover, @focus, @hover);
+}
+.a-color(@normal, @hover){
+	.a-color(@normal, @hover, @normal, @hover);
+}
+.a-color(@normal){
+	.a-color(@normal, @normal, @normal, @normal);
+}
+
+.a-bg-color(@normal, @hover, @focus, @active){
+	background-color: @normal;
+	&:hover{ background-color: @hover; }
+	&:focus{ background-color: @focus; }
+	&:active, &:active:focus{ background-color: @active; }
+	&:visited{ background-color: @normal; }
+}
+.a-bg-color(@normal, @hover, @focus){
+	.a-bg-color(@normal, @hover, @focus, @hover);
+}
+.a-bg-color(@normal, @hover){
+	.a-bg-color(@normal, @hover, @normal, @hover);
+}
+.a-bg-color(@normal){
+	.a-bg-color(@normal, @normal, @normal, @normal);
+}

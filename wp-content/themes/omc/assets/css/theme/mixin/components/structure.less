@@ -1,0 +1,36 @@
+/*====================
+ * CONTAINER
+ *====================*/
+.container(@width, @padding){
+	padding: 0 @padding;
+	width: 100%;
+	max-width: @width + 2*@padding;
+}
+
+.container-left(@width, @padding, @indent) when (ispercentage(@indent)){
+	margin-left: @indent;
+	padding: 0 @padding;
+	width: 100% - @indent;
+	max-width: @width + 2*@padding;
+}
+
+/*=================
+ * RATIO WRAP
+ *=================*/
+.RatioWrap(){
+	.ratio-wrap{
+		position: relative;
+
+		> .wrap-content{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+	}
+	
+	.setRatio(@width, @height){
+		padding-top: percentage(@height/@width);
+	}
+}

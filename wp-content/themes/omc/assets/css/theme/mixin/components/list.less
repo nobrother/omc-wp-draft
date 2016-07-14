@@ -1,0 +1,111 @@
+/*====================
+ * LIST
+ *====================*/
+.List(){
+	
+	.setNumbering(@style: "decimal", @before: "", @after: ""){
+		/*-------------------------
+		* Posible numbering style
+		*-------------------------
+		* disc (• • •)
+		* circle (○ ○ ○)
+		* square
+		* decimal (1 2 3)
+		* decimal-leading-zero (01, 02, 03)
+		* lower-roman (i ii iii)
+		* upper-roman (I II III)
+		* lower-greek (α β γ)
+		* lower-latin (a b c)
+		* upper-latin (A B C)
+		* armenian (Ա Բ Գ)
+		* georgian (ა ბ გ)
+		* lower-alpha (a b c)
+		* upper-alpha (A B C)
+		* cjk-ideographic (Chinese)
+		* hebrew
+		* hiragana
+		* hiragana-iroha
+		* katakana
+		* katakana-iroha
+		* none
+		*/
+		> li:before {
+			content: ~"'@{before}'counter(list-numbering-counter, @style)'@{before}'";
+		}
+	};
+	
+	.setFa(@icon){
+		> li:before {
+			content: "@{icon}";
+		}
+	}
+
+	.collapse(){
+		> li {
+			padding-left: 0;
+			
+			i:first-child, .list-bullet, &:before, figure {
+				position: static;	
+			}
+		}
+	}
+
+	.list {
+		> li {
+			// Set bullet with absolute
+			// Indent content with padding
+			position: relative;
+			.last-margin-bottom-zero();
+			padding-left: 2.5em;
+
+			i:first-child, .list-bullet, &:before, figure {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			.last-margin-bottom-zero();
+		}
+		
+		// Fa
+		&.list-fa{
+			> li:before{
+				font-family: FontAwesome;
+				line-height: 1em;
+				color: @brand-color;
+			}
+		}
+
+		// Set numbering
+		&.list-numbering {
+
+			// Set counter
+			counter-reset: list-numbering-counter;
+
+			> li:before {
+				content: counter(list-numbering-counter, decimal);
+				counter-increment: list-numbering-counter;
+			}
+		}
+
+		/*
+		* Set image
+		* Support background image and <img>
+		*/
+		&.list-image {
+			> li {
+				> figure {
+					.background-cover();
+					
+					// <img>
+					img {
+						display: block;
+						margin: auto;
+						max-height: 100%;
+						max-width: 100%;          
+					}
+				}
+			}
+		}
+	}
+}

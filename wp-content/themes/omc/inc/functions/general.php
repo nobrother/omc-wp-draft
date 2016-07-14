@@ -439,7 +439,92 @@ function less(){
 
 /* 
  * Compile Less in OMC style
- */
+ *
+function compile_less(){
+	
+	// General Mixin
+	$pc_mixin = $mobile_mixin = $tablet_mixin = array( 
+		OMC_CSS_THEME_DIR.'/mixin/mixin-main.less', 
+		OMC_CSS_THEME_DIR.'/mixin/mixin-site.less',
+	);
+	// Device Mixin
+	$pc_mixin[] = OMC_CSS_THEME_DIR.'/mixin/mixin-pc.less';
+	$mobile_mixin[] = OMC_CSS_THEME_DIR.'/mixin/mixin-mobile.less';
+	$tablet_mixin[] = OMC_CSS_THEME_DIR.'/mixin/mixin-tablet.less';
+	$admin_mixin = '';
+	
+	$pc_style = $mobile_style = $tablet_style = array();
+	$admin_style = array( OMC_CSS_THEME_DIR.'/others/admin.less' );
+	
+	// Generate mixin import string
+	foreach( array( 'pc', 'mobile', 'tablet' ) as $type ){
+		$var = $type.'_mixin';
+		$$var = '@import "'.implode( '";@import "', $$var ).'";';
+	}
+	
+	// Style
+	$pc_style = $mobile_style = $tablet_style = array();
+	$pc_style[] = OMC_CSS_THEME_DIR.'/devices/pc.less';
+	$mobile_file = OMC_CSS_THEME_DIR.'/devices/mobile.less';
+	$tablet_file = OMC_CSS_THEME_DIR.'/devices/tablet.less';
+	if( file_exists( $mobile_file ) ){
+		$mobile_style[] = $mobile_file;
+		$tablet_style[] = file_exists( $tablet_file ) ? $tablet_file : $mobile_file;						
+	} else {
+		$mobile_style[] = OMC_CSS_THEME_DIR.'/devices/pc.less';
+		$tablet_style[] = file_exists( $tablet_file ) ? $tablet_file : OMC_CSS_THEME_DIR.'/devices/pc.less';
+	} 
+	
+	// Templates
+	$files = scandir_recursive( OMC_TEMPLATE_DIR, true, '/style\.less$/' );	
+	foreach( $files as $file ){
+		$pc_style[] = $file['file'];
+		$mobile_file = $file['dirname'].'/'.$file['filename'].'-mobile.less';
+		$tablet_file = $file['dirname'].'/'.$file['filename'].'-tablet.less';
+		if( file_exists( $mobile_file ) ){
+			$mobile_style[] = $mobile_file;
+			$tablet_style[] = file_exists( $tablet_file ) ? $tablet_file : $mobile_file;						
+		} else {
+			$mobile_style[] = $file['file'];
+			$tablet_style[] = file_exists( $tablet_file ) ? $tablet_file : $file['file'];					
+		}				
+	}
+	unset( $files, $mobile_file, $tablet_file );
+	
+	// Compile and cache every output file
+	foreach( array( 'pc', 'mobile', 'tablet', 'admin' ) as $type ){
+		$styles = $type.'_style';
+		$mixin = $type.'_mixin';
+		
+		// Create output file
+		$file_resource = fopen( omc_theme_css_path_url( $type ), 'w' );
+
+		foreach( $$styles as $file ){			
+			
+			$content = $$mixin.'@import "'.$file.'";';
+			$hash = md5( $content );
+			$input_file = CACHES_DIR.'/'.$hash.'.less';
+			$cache_file = CACHES_DIR.'/'.$hash.'.less.cache';
+			
+			if( !file_exists( $input_file ) )
+				file_put_contents( $input_file, $content );
+			
+			if ( file_exists( $cache_file ) )
+				$cache = unserialize( file_get_contents( $cache_file ) );
+			else
+				$cache = $input_file;
+			
+			$new_cache = less()->cachedCompile( $cache );
+			if ( !is_array( $cache ) || $new_cache['updated'] > $cache['updated'] )
+				file_put_contents( $cache_file, serialize( $new_cache ) );
+			
+			fwrite( $file_resource, $new_cache['compiled'] );
+		}
+		
+		fclose( $file_resource );
+	}
+}
+*/
 function compile_less(){
 	
 	// General mixin

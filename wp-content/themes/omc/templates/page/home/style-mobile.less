@@ -1,23 +1,5 @@
 #page-home{
-		.filter{
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
 	
-		.filter.fyellow{
-		background-color: rgba(250,229,78,0.75);
-	}	
-	
-			.filter.fyellow2{
-		background-color: rgba(250,229,78,0.20);
-	}	
-	
-		.filter.fblack{
-		background-color: rgba(0,0,0,0.2);
-	}
 }
 
 #home-block-intro{
@@ -26,7 +8,14 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	
-
+	.filter{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(250,229,78,0.75);
+	}
 	
 	.block-content{
 		position: relative;
@@ -42,7 +31,7 @@
 	}
 	
 	.block-body{
-		padding: 5rem 0 10rem;
+		padding: 5rem @padding-side 10rem;
 		background-color: rgba(0,0,0,0.15);
 	}
 	
@@ -87,14 +76,13 @@
 	
 	p{
 		font-size: 2.4rem;
-		.last-margin-bottom-zero(1.5rem);
+		.last-margin-bottom-zero(1.5em);
 	}
 	
 	.block-footer{
 		position: relative;
 		img {
 			.absolute-center();
-			    max-height: none;
 		}
 	}
 }
@@ -121,6 +109,8 @@
 	}
 	
 	.block-body{
+		margin-bottom: 10rem;
+		
 		> .container {
 			.container(@container-width-s, @padding-side);
 		}
@@ -128,7 +118,7 @@
 		.content {
 			position: relative;
 			background-color: @bg-color-grey;
-			padding: 8.4rem 0 55rem;
+			padding: 8.4rem 0;
 			
 			> .container{
 				.container(@container-width-s * 0.755556, @padding-side);	// 680px
@@ -149,11 +139,7 @@
 		}
 	}
 	
-	.block-footer{
-		position: absolute;
-		width: 100%;
-		top: 725px;
-		
+	.block-footer{		
 		> .container {
 			.container(@container-width-l, @padding-side);
 		}
@@ -161,7 +147,7 @@
 }
 
 #home-cards-mean{
-	.Row > .Row-inline-block > .setGutter(40px);
+	.Row > .Row-inline-block > .setGap(6rem);
 	
 	.card{
 		padding: 4.5rem 0;
@@ -169,7 +155,7 @@
 	}
 	
 	.card-container{
-		.container(205px, @padding-side);
+		.container(250px, @padding-side);
 	}
 	
 	.card-header, .card-body, .card-footer{
@@ -217,10 +203,14 @@
 			}
 			
 			li{
-				.last-margin-bottom-zero(1.3rem);
+				margin-bottom: 1.3rem;
 				padding-left: 4.5rem;
 				font-size: 1.5rem;
 				font-style: italic;
+				
+				&:last-child{
+					margin-bottom: 0;
+				}
 			}
 		}
 	}
@@ -257,25 +247,30 @@
 	}
 	
 	.list{
+		.List > .collapse();
+		
 		li{
 			.last-margin-bottom-zero(8rem);
-			padding-left: 15rem;
+			figure{
+				margin-bottom: 2rem;
+				img{
+					margin: 0;
+				}
+			}
 		}
 		
 		.list-header{
 			margin-bottom: 1.8rem;			
 			color: @fn-color-black;
 			
-			> div{
-				&, & span, & b{
+			> div{				
+				span, b{
 					display: inline-block;
 					vertical-align: middle;
 				}
 			}
 			
-			.point{
-				margin-right: 6.8rem;
-				
+			.point{				
 				span {
 					font-size: 2.1rem;
 				}
@@ -326,11 +321,6 @@
 		.last-margin-bottom-zero(9.4rem);
 	}
 	
-	.feature-content{
-		width: 100%;
-		max-width: 420px;
-	}
-	
 	.feature-header{
 		margin-bottom: 2.4rem;
 		
@@ -377,7 +367,7 @@
 }
 
 #home-cards-projects{
-	.Row > .Row-inline-block > .setGutter(4.2rem);
+	.Row > .Row-inline-block > .setGap(6rem);
 	
 	.card{
 		background-color: #fff;
@@ -422,55 +412,36 @@
 
 #home-list-curricullum{
 	> li {
-		margin-bottom: 4rem;
-		&:last-child{
-			margin-bottom: 0;
-		}
+		.last-margin-bottom-zero(4rem);
 		
 		background-color: #fff;
 		.box-shadow(1px 1px 5px 0px #bbb);
 		padding: 4rem 4.5rem 5.2em;
 		
-		.row-flexbox{
-			.flexbox-align-items(flex-start);
-			.flexbox-justify-content(space-between);
-		}
-		
-		.header{
-			.flex(0 0 9.8rem);
-			
+		.header{			
 			font-size: 2.4rem;
 		}
 		
-		.body{
-			.flex(0 0 62rem);
-			padding: 0 @padding-side;
-			
+		.body{			
 			.title{
 				margin-bottom: 3rem;
 				font-size: 2.2rem;
 				font-weight: @semibold;
 			}
 			
-			.row-flexbox{
-				.flexbox-justify-content(space-between);
+			.left-list, .right-list{
+				margin-bottom: 2.5rem;
 			}
 			
 			.list{
 				color: @fn-color-strong-on-bg;
 				li{
-					margin-bottom: 1rem;
+					.last-margin-bottom-zero(1rem);
 				}
-			}
-			
-			.left-list, .right-list{
-				.flex(0 0 267px);
 			}
 		}
 		
 		.footer{
-			.flex(0 0 25.2rem);
-			.flex-align-self(center);
 			text-align: center;
 		}
 	}
@@ -516,10 +487,6 @@
 		.container(@container-width-l, @padding-side);
 	}
 	
-	.feature-content {
-		margin-left: 5.2rem;
-	}
-	
 	.feature-header{
 		margin: 2.6rem auto;
 		.typo-small-title();		
@@ -559,7 +526,10 @@
 		
 		.section{
 			max-width: 375px;
-			.last-margin-bottom-zero(2.4rem);
+			margin-bottom: 2.4rem;
+			&:last-child{
+				margin-bottom: 0;
+			}
 			
 			.title{
 				margin-bottom: 0.9rem;
@@ -591,7 +561,6 @@
 }
 
 #home-cards-they-say{
-	.Row > .Row-flexbox > .setGutter(4.6rem);
 	.Row > .Row-flexbox > .setGap(3.5rem);
 	
 	.card{
@@ -600,9 +569,6 @@
 		
 		.card-container{
 			.container(295px, @padding-side);
-			.flexbox();
-			.flexbox-direction(column);
-			.flexbox-justify-content(space-between);
 		}
 		
 		q{
@@ -643,7 +609,11 @@
 			
 			.description{
 				p{
-					.last-margin-bottom-zero(0.3rem);					
+					margin-bottom: 0.3rem;
+					&:last-child{
+						margin-bottom: 0;
+					}
+					
 					font-weight: @semibold;
 				}
 			}
@@ -666,77 +636,69 @@
 	
 	.block-body{
 		.left-col{
-			.flex(0 0 400px);			
-			margin-right: 4.6rem;
-
-			.content{
-				height: 100%;
-				background-color: @bg-color-grey;
-				padding: 5.5rem;
-
-				.section{
-					margin-bottom: 5rem;
-					&:last-child{
-						margon-bottom: 0;
-					}
-
-					.title{
-						margin-bottom: 1.4rem;
-						font: @normal 1.5rem @fn-montserrat;
-						color: #b2b2b2;
-						letter-spacing: 0.15rem;
-					}
-					.description{
-						font-size: 2.4rem;
-						font-weight: @normal;
-						color: @fn-color-black;
-					}
-
-					.social-links{
-						a{
-							display: block;
-							margin-bottom: 2.5rem;
-							&:last-child{
-								margin-bottom: 0;
-							}
-
-							font-size: 4.2rem;
-							color: @brand-color;
+			margin-bottom: 7rem;
+		}
+		
+		.left-col .content{
+			background-color: @bg-color-grey;
+			padding: 5.5rem 3rem;
+			
+			.section{
+				.last-margin-bottom-zero(5rem);
+				
+				.title{
+					margin-bottom: 1.4rem;
+					font: @normal 1.5rem @fn-montserrat;
+					color: #b2b2b2;
+					letter-spacing: 0.15rem;
+				}
+				.description{
+					font-size: 2.4rem;
+					font-weight: @normal;
+					color: @fn-color-black;
+				}
+				
+				.social-links{
+					a{
+						display: block;
+						margin-bottom: 2.5rem;
+						&:last-child{
+							margin-bottom: 0;
 						}
+						
+						font-size: 4.2rem;
+						color: @brand-color;
 					}
 				}
 			}
 		}
 		
-		.right-col{
-			.content{
-				height: 100%;
-				border: 1px solid #ffd52c;
-				padding: 5rem 4.4rem;
-
-				.qna{
-					margin-bottom: 4.4rem;
-					&:last-child{
-						margon-bottom: 0;
-					}
-
-					.question{
-						margin-bottom: 1.2rem;
-						font-size: 1.7rem;
-						font-weight: @bold;
-						color: @brand-color;
-					}
-
-					.answer{
-						color: @fn-color-strong-on-bg;
-					}
+		.right-col .content{
+			border: 1px solid #ffd52c;
+			padding: 5rem 3rem;
+			
+			.qna{
+				margin-bottom: 4.4rem;
+				&:last-child{
+					margon-bottom: 0;
+				}
+				
+				.question{
+					margin-bottom: 1.2rem;
+					font-size: 1.7rem;
+					font-weight: @bold;
+					color: @brand-color;
+				}
+				
+				.answer{
+					color: @fn-color-strong-on-bg;
 				}
 			}
 		}
 	}
 	
 	+ .divider{
-		max-width: 1100px;
+		margin: 0 @padding-side;
 	}
 }
 
@@ -750,8 +712,7 @@
 		}
 		
 		p{
-			.last-margin-bottom-zero(1rem);
-			
+			.last-margin-bottom-zero(1rem);			
 			.typo-subheading();
 			color: @fn-color-strong-on-bg;
 		}
@@ -764,14 +725,10 @@
 			.container(@container-width-m, @padding-side);
 		}
 		
-		.left-col{
-			.flex(0 0 505px);
-		}
-		
-		.cards{			
-			margin-right: 3rem;
+		.cards{
+			margin-bottom: 3rem;
 			
-			.Row > .Row-inline-block > .setGutter(3rem);
+			.Row > .Row-inline-block > .setGap(3rem);
 			
 			.card{
 				padding: 4rem 3rem 6rem;
@@ -821,13 +778,8 @@
 			}
 			
 			.footer{
-				.rate, .action{
-					display: inline-block;
-					vertical-align: middle;
-				}
 				
 				.rate{
-					margin-right: 4rem;
 					color: @brand-color;
 					
 					.rm, .amount{
@@ -843,7 +795,6 @@
 				}
 				
 				.action{
-					max-width: 17.5rem;
 					.btn{
 						font-size: 2.1rem;
 						.a-color(@fn-color-black);
@@ -861,10 +812,7 @@
 			.container(@container-width-m, @padding-side);
 		}
 		
-		.feature-image{
-			.flex(0 0 auto);
-			padding-right: 15px;
-			
+		.feature-image{			
 			text-align: center;
 			
 			.title{
@@ -876,9 +824,7 @@
 			}
 		}
 		
-		.feature-content{
-			.flex(0 0 580px);
-			
+		.feature-content{			
 			.title{
 				margin-bottom: 2rem;
 				font-family: @fn-montserrat;
@@ -887,7 +833,10 @@
 			}
 			
 			p{
-				.last-margin-bottom-zero(3rem);
+				margin-bottom: 3rem;
+				&:last-child{
+					margin-bottom: 0;
+				}
 				color: @fn-color-strong-on-bg;
 			}
 		}

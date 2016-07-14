@@ -1,0 +1,174 @@
+/*=================
+ * GRID SYSTEM
+ *=================*/
+
+/*--------------------
+ * Float model
+ *--------------------*/ 
+.Row(){
+	// Generate class: .col-md-1, .col-md-2....
+	.make-grid-columns(@grid-columns) {
+		.col(@index) when (@index =< @grid-columns) {
+			@item: ~".col-@{device}-@{index}";
+			@{item} {
+				width: percentage((@index / @grid-columns));
+				.flex-basis(percentage((@index / @grid-columns))) !important;
+			}
+			.col((@index + 1));
+		}
+		.col(1); // kickstart it
+	} .make-grid-columns(12);
+	
+	.setGutter(@selector, @value){
+		@item: ~"@{selector}";
+		> @{item} {
+			margin-right: -@value;
+
+			> div {
+				padding-right: @value;
+				.last-margin-bottom-zero();
+			}
+		}	
+	}
+
+	.setGutterRule(@selector, @gutter, @rule, @rule-width){
+		.Row > .setGutter(@selector, @gutter);
+
+		@item: ~"@{selector}";
+		> @{item} > div{
+			&:after{
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 100%;
+				border-right: @rule;
+				top: 0;
+				right: -(@gutter - @rule-width)/2;
+			}
+			&:last-child:after{
+				display: none;
+			}
+		}
+	}
+
+	.setGap(@selector, @gap){
+		@item: ~"@{selector}";
+		> @{item} {
+			margin-bottom: -@gap;
+
+			> div{
+				padding-bottom: @gap;
+			}
+		}
+	}
+	
+	.collapse(){
+		> .row-inline-block, > .row-flexbox{
+			display: block!important;
+
+			// Cannot use gutter in mobile device
+			margin-right: 0!important;
+			> div {
+				display: block!important;
+				padding-right: 0!important;
+				width: auto;
+			}
+		}
+	}
+
+	/*======================
+	* FLEXBOX MODEL
+	*======================*/
+	.row-flexbox{		
+		.flexbox();
+		
+		> div {
+			position: relative;
+			.flex(1 1 auto);
+		}
+	}
+	.Row-flexbox(){
+		.setGutter(@value){
+			.Row > .setGutter(".row-flexbox", @value)
+		}
+		.setGutterRule(@gutter, @rule, @rule-width){
+			.Row > .setGutterRule(".row-flexbox", @gutter, @rule, @rule-width);
+		}
+		.setGap(@gap){
+			.Row > .setGap(".row-flexbox", @gap);
+		}
+	}
+	
+	/*======================
+	* INLINE BLOCK MODEL
+	*======================
+	* Better then float model but might not work
+	* on certain device/pc/browser
+	* Assumeing single space with monospace font can 
+	* be offset by -0.65em letter spacing
+	*/
+	.row-inline-block{
+		
+		// Work arround the fuck up white space problem
+		font-family: monospace !important;
+		letter-spacing: -0.65em !important;
+
+		text-align: left;
+		
+		> div {
+
+			/*
+			* Recover back the fuck up work arround
+			* You need to put back the font family
+			* Assume is @fn-body
+			*/
+			font-family: @fn-body;
+			letter-spacing: normal;
+
+			display: inline-block !important;
+			float: none !important;
+			vertical-align: top;
+
+		}
+		
+		&.no-wrap{
+			white-space: nowrap;
+
+			> div{
+				white-space: normal;
+			}
+		}
+
+		// Make justify
+		&.justify{
+			text-align: justify;
+			line-height: 0;
+			font-size: 0;
+			
+			&:after{
+				content: '';
+				display: inline-block;
+				width: 100%;
+				height: 0;
+			}
+			
+			> div {
+				text-align: left;
+				line-height: @line-height-body;
+				font-size: @fn-size-body;
+			}
+		}
+	}
+
+	.Row-inline-block(){		
+		.setGutter(@value){
+			.Row > .setGutter(".row-inline-block", @value)
+		}
+		.setGutterRule(@gutter, @rule, @rule-width){
+			.Row > .setGutterRule(".row-inline-block", @gutter, @rule, @rule-width);
+		}
+		.setGap(@gap){
+			.Row > .setGap(".row-inline-block", @gap);
+		}
+	}
+}

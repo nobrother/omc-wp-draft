@@ -4,7 +4,7 @@
 			<h1>Login</h1>
 		</header>
 		
-		<form class="user-form user-form-login" id="form-login">
+		<form class="user-form user-form-login form" id="form-login">
 			<?php omc_nonce_field( 'omc_user_login' ) ?>
 			<div class="form-group">				
 				<label for="username">Username / Email</label>
@@ -20,6 +20,7 @@
 				<div class="checkbox"> 
 					<label>
 						<input type="checkbox" name="remember" id="remember" checked value="1">
+						<i></i>
 						Keep me log in
 					</label> 
 				</div>

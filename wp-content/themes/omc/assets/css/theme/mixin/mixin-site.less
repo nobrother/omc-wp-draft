@@ -7,40 +7,40 @@
 /*====================
  * COLOR
 *====================*/
-@brand-color : #5cb947;		
-@brand-color1: darken(@brand-color, 10%);
-@brand-color3: darken(@brand-color, 20%);
+@brand-color : #E4BE1F;
+@brand-color-lighter: #fae54e;
 
 @fn-color-black : #000;
-@fn-color-grey1 : #1a1a1a;
-@fn-color-grey2 : #4d4d4d;
-@fn-color-grey3 : #666666;		// For darker small text
-@fn-color-grey4 : #808080;		// For lighter small text
-@fn-color-grey5 : #aeaeae;
-@fn-color-white	: #fff;
+@fn-color-grey-title-strong: #1a1a1a;
+@fn-color-grey-title: #333;
+@fn-color-strong-on-bg : #4d4d4d;
+@fn-color-grey-body: #666;
+@fn-color-grey-lighter: #989898;
 
-@fn-serif: Georgia,Cambria,"Times New Roman",Times,serif;
-@fn-san-serif: 'Source Sans Pro', sans-serif;
+@fn-open-sans: 'Open Sans', sans-serif;
+@fn-montserrat: 'Montserrat', sans-serif;
 
 @light: 300;
 @normal: 400;
 @semibold: 600;
 @bold: 700;
 
-@bg-color-black: #000;
-@bg-color-grey1: #f2f2f2;
+@bg-color-brand: #FEFFE1;
+@bg-color-grey: #F4F4EF;
+@bg-color-grey-light: #f8f8f3;
 
 // Body
-@fn-body: @fn-san-serif;
-@fn-size-body: 18px;
-@fn-weight-body: @normal;
-@line-height-body: unit((roundup(@fn-size-body, @base-unit) + 1*@base-unit) / @fn-size-body);
-@fn-color-body: @fn-color-grey4;
+@fn-body: @fn-open-sans;
+@fn-size-body: 1.4rem;
+@fn-weight-body: @light;
+@line-height-body: 1.5;
+@fn-color-body: @fn-color-grey-body;
 @bg-color-body: transparent;
 
 // Section
-@margin-section: roundup(260px, @base-unit);
-@margin-sub-section: roundup(200px, @base-unit);
+@block-margin-l: 135px;
+@block-margin-m: 115px;
+@block-margin-s: 95px;
 
 // Padding side
 @padding-side: 15px;
@@ -48,39 +48,25 @@
 // Row
 @row-rule: 1px solid #aeaeae;
 
-/*====================
- * SCREEN
-*====================*/
-@screen-phone-max: 767px;
-@screen-pc-min: 1170px;
-@screen-tablet-min: @screen-phone-max + 1;
-@screen-tablet-max: @screen-pc-min - 1;
-
-@phone: ~"(max-width: @{screen-phone-max})";
-@tablet: ~"(min-width: @{screen-tablet-min})";
-@tablet-only: ~"(min-width: @{screen-tablet-min}) and (max-width: @{screen-tablet-max})";
-@pc: ~"(min-width: @{screen-pc-min})";
-
-/*====================
- * OTHERS
-*====================*/
-@top-line: 5px solid #ccc;
+// Width
+@container-width-l: 1200px;
+@container-width-m: 1050px;
+@container-width-s: 900px;
 
 /*====================
  * SITE
 *====================*/
 .Site(){
+	html{
+		font-size: 10px;
+	}
+	
 	body {
-		background-color: @bg-color-body;
-		
-		font-size: @fn-size-body;
-		font-family: @fn-body;
-		font-weight: @fn-weight-body;
+		font: @fn-weight-body @fn-size-body/@line-height-body @fn-body;
 		color: @fn-color-body;
-		line-height: @line-height-body;
 	}
 	#content{
-		margin-bottom: roundup(300px, @base-unit);
+		margin-bottom: 30rem;
 	}
 	
 	.container {
@@ -91,7 +77,17 @@
 	.divider {
 		margin: auto;
 		height: 1px;
-		background-color: #808080;
+		background-color: #CBCBCB;
+	}
+	
+	.block{
+		padding-top: @block-margin-m;
+		padding-bottom: @block-margin-l;
+	}
+	
+	p{
+		margin-bottom: 0;
+		line-height: 1.7;
 	}
 	
 	h1,h2,h3,h4,h5,h6 {
@@ -100,8 +96,8 @@
 	
 	h1,h2,h3,h4,h5,h6,div[class*=header],div[class*=title]{
 		font-family: @fn-body;
-		color: @fn-color-black;
-		font-weight: @bold;
+		font-weight: @fn-weight-body;
+		color: @fn-color-grey-title;
 	}
 	
 	a{
@@ -117,18 +113,6 @@
 			&, &:hover, &:focus, &:active {
 				text-decoration: underline;
 			}
-		}
-		
-		&.brand-link{
-			.a-color(inherit, @brand-color);
-			
-			display: inline-block;
-			border-bottom: 4px solid @brand-color;
-		}
-		
-		&.link, &.brand-link{
-			-webkit-transition: color 0.3s cubic-bezier(.44,.01,.1,1);
-			transition: color 0.3s cubic-bezier(.44,.01,.1,1);
 		}
 	}
 	
@@ -155,9 +139,8 @@
 	*====================*/
 	.btn {
 		font-weight: @bold;
-		border: none;
 		white-space: nowrap;
-		.Btn > .setSize(0; 0; inherit; inherit; 0);	// Reset bootstraps
+		text-align: center;
 		
 		&, &:active, &.active {
 			&:focus, &.focus {
@@ -175,13 +158,15 @@
 	}
 	
 	.btn-primary{
-		.Btn > .set(@fn-color-white, @brand-color, @brand-color);  // color, background-color, border-color
-		padding: roundup(15px, @hbase-unit) roundup(36px, @base-unit);
-		@fn: 24px;
-		font-size: @fn;
-		line-height: roundup(@fn, @base-unit);
-		font-weight: @bold;
+		display: block;
+		padding: 1.7rem 3.6rem;
+		font-size: 1.8rem;
+		font-weight: @semibold;
+		border-color: @brand-color;
 		border-radius: 0;
+		
+		.a-color(#fff);
+		.a-bg-color(@brand-color, lighten(@brand-color, 15%));
 	}	
 	
 	/*====================
@@ -197,15 +182,6 @@
 	.list{
 		.fa{
 			color: @brand-color;
-		}
-	}
-	
-	/*====================
-	* Pagination
-	*====================*/
-	.pagination{
-		.omission a{
-			border-width: 0 1px;
 		}
 	}
 }

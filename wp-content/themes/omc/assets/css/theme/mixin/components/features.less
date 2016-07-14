@@ -1,0 +1,32 @@
+/*=======================================
+ * FEATURES
+ * ======================================
+ * A list of "Feature" items
+ * "Feature" item is a two-columned item
+ * generally with image and text
+ * Both column is push to each end.
+ * ---------------------------------------*/
+.Features(){
+	.features{
+		> .feature{
+			
+			> .row-flexbox{
+				.flexbox-justify-content(space-between);
+			}
+			
+			.feature-image{
+				.flex(0 0 auto);
+				.background-cover();
+			}
+		}
+	}
+	
+	.setMinGutter(@value){
+		> .feature{
+			.feature-image + .feature-content,
+			.feature-content + .feature-image{
+				margin-left: @value;
+			}	
+		}
+	}
+}

@@ -4,7 +4,7 @@
 			<h1>Register</h1>
 		</header>
 		
-		<form class="user-form user-form-register" id="form-register">
+		<form class="user-form user-form-register form" id="form-register">
 			<?php omc_nonce_field( 'omc_user_register' ) ?>
 			<div class="form-group">				
 				<label for="username">Username</label>

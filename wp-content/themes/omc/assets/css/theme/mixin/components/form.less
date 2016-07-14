@@ -1,0 +1,140 @@
+.Form(){
+	label {
+		display: block;		
+		.form &{
+			margin-bottom: 0.8rem;
+		}
+	}
+	
+	// Normalize form controls
+	input[type="search"] {
+		.box-sizing(border-box);
+	}
+	input[type="radio"], input[type="checkbox"] {
+		margin: 4px 0 0;
+		margin-top: 1px \9; // IE8-9
+		line-height: normal;
+	}
+	input[type="file"] {
+		display: block;
+	}
+	input[type="range"] {
+		display: block;
+		width: 100%;
+	}
+	select[multiple], select[size] {
+		height: auto;
+	}
+	
+	.form-control {
+		display: block;
+		width: 100%;
+		vertical-align: middle;
+		background-image: none; // Reset unusual Firefox-on-Android default style;
+		border: 2px solid #c9c9c9;
+		padding: 0.3em 0.6em;		
+		border-radius: 3px;
+		.transition(~"border-color ease-in-out .15s");
+
+		&:hover{
+			border-color: #a6a6a6;
+		}
+		&:focus {
+			border-color: @brand-color;
+		}
+
+		// Placeholder
+		.placeholder();
+
+		// Unstyle the caret on `<select>`s in IE10+.
+		&::-ms-expand {
+			border: 0;
+			background-color: transparent;
+		}
+
+		// Disabled and read-only inputs
+		//
+		// HTML5 says that controls under a fieldset > legend:first-child won't be
+		// disabled if the fieldset is disabled. Due to implementation difficulty, we
+		// don't honor that edge case; we style them as disabled anyway.
+		&[disabled], &[readonly], fieldset[disabled] & {
+			background-color: #999;
+			opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+		}
+
+		&[disabled],
+		fieldset[disabled] & {
+			cursor: not-allowed;
+		}
+
+		// Reset height for `textarea`s
+		textarea& {
+			height: auto;
+		}
+	}
+	
+	.form-group{
+		margin-bottom: 2rem;
+		
+		&.has-error{
+			@color: #B22222;
+			
+			.form-control, label, .help-block{
+				color: @color;
+			}			
+			.form-control{
+				border-color: @color;
+			}
+		}
+	}
+	
+	.help-block{
+		display: inline-block;
+		
+		.form &{
+			margin-top: 0.6rem;
+		}		
+	}
+	
+	.checkbox{
+		label{
+			position: relative;
+			padding-left: 2.4em;
+			
+			@fn: 2.4rem;
+			i{
+				font-style: normal;
+				position: absolute;
+				left: 0;
+				
+				&:before, &:after{
+					position: absolute;
+					font-family: FontAwesome;
+					top: 0;
+					left: 0;
+					line-height: 0.83333 * @fn;
+					top: 0.125 * @fn;
+				}
+
+				&:before{
+					content: '\f096';
+					font-size: @fn;
+				}
+
+				&:after{
+					content: '\f00c';
+					font-size: 0.75 * @fn;
+					opacity: 0;
+				}
+			}
+
+			input[type=checkbox]{
+				display: none;
+				
+				&:checked + i:after{
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
