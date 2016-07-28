@@ -1,0 +1,156 @@
+.chapter-index {
+	background-color: #e1e1e1;
+	padding: 8px 12px 6px 12px;
+	position: relative;
+}
+.chapter-index .chapters-dropdown-trigger {
+	border: solid 1px transparent;
+	font-weight: 600;
+	padding: 3px 3px 0;
+	text-decoration: none;
+}
+
+.chapter-index.active .chapters-dropdown-trigger {
+	background-color: white;
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
+	border: solid 1px #c6c4b8;
+	border-bottom: none;
+	position: relative;
+	z-index: 10;
+}
+
+.chapters-dropdown-panel {
+	display: none;
+	position: absolute;
+	border: solid 1px #e2e0d8;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px #ccc;
+	-moz-box-shadow: 0 1px 2px #ccc;
+	box-shadow: 0 1px 2px #ccc;
+	top: 25px;
+	z-index: 1;
+}
+.chapter-index.active .chapters-dropdown-panel {
+	background-color: white;
+	display: block;
+	left: 0;
+	right: 0;
+}
+.iframe-interactive-demo {
+	border: 10px solid #222;
+	box-sizing: border-box;
+	width: 100%;
+}
+.WPMJG-example #wpwrap {
+	background-color: #fff;
+	box-sizing: border-box;
+	padding: 10px;
+}
+.WPMJG-example #adminmenuback,
+.WPMJG-example #adminmenuwrap,
+.WPMJG-example #wpfooter {
+	display: none;
+}
+.WPMJG-example #wpcontent {
+	margin-left: 0;
+}
+
+.WPMJG-example #wpbody-content {
+	padding-bottom: 0;
+}
+
+.example {
+	margin: 0 auto;
+	width: 80%;
+}
+.example h4 {
+	text-transform: uppercase;
+}
+.add-new-h2 {
+	text-transform: none;
+	text-decoration: none;
+}
+
+.media-library-screenshot {
+	width: 772px;
+	height: 250px;
+	width: 772px;
+	height: 250px;
+	background-image: url(screenshot-media-library.png);
+	background-size: 772px 250px;
+	position: relative;
+	margin: 20px auto;
+}
+
+.vignette {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	padding: 20px 30px;
+	background: rgba( 0, 0, 0, 0.6 );
+	background: transparent;
+	-webkit-box-shadow: inset 0 0 50px 4px rgba( 0, 0, 0, 0.2 ), inset 0 -1px 0 rgba( 0, 0, 0, 0.1 );
+	-moz-box-shadow: inset 0 0 50px 4px rgba( 0, 0, 0, 0.2 ), inset 0 -1px 0 rgba( 0, 0, 0, 0.1 );
+	box-shadow: inset 0 0 50px 4px rgba( 0, 0, 0, 0.2 ), inset 0 -1px 0 rgba( 0, 0, 0, 0.1 );
+}
+
+.entry-template {
+	display: none;
+}
+.live-example {
+	background: white;
+	padding: 20px;
+}
+/* Hack to fix highlight.js being stupid */
+.coffeescript .javascript, .javascript .xml, .tex .hljs-formula, .xml .javascript, .xml .vbscript, .xml .css, .xml .hljs-cdata, .xml .php, .php .xml {
+	opacity: 1;
+}
+
+code {
+	background-color: transparent;
+	overflow: scroll;
+}
+
+dd {
+	margin-left: 40px;
+}
+
+dl dt code,
+dl dd code,
+p code {
+	font-weight: 700;
+	padding: 0;
+}
+
+.add-new-h2 {
+	vertical-align: middle;
+}
+
+figure {
+	margin: 0 auto;
+	max-width: 600px;
+	text-align: center;
+}
+
+.inheritance-info {
+	color: #777;
+	font-style: italic;
+	margin-left: 10px;
+}
+.inheritance-info code {
+	font-style: normal;
+}
+.inheritance-info a {
+	color: #777;
+}

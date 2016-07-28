@@ -1,6 +1,6 @@
 var apps = apps || {};
 
-(function($, window, bb, _, apps, info){
+(info && 'user_login' === info.url_id) && (function($, window, bb, _, apps, info){
 	
 	// Define a model with some validation rules
 	var loginModel = bb.Model.extend({
@@ -31,9 +31,12 @@ var apps = apps || {};
 		},
 		
 		login: function () {
+			var view = this;
+			
 			// Check if the model is valid before saving
-			if(this.model.isValid()){
-				var data = $.extend({}, this.$el.serializeObject(), this.model.toJSON());
+			this.model.isValid(true, function(){
+				
+				var data = $.extend({}, view.$el.serializeObject(), view.model.toJSON());
 				
 				apps.overlay.set('type', 'loading').show();
 				
@@ -56,34 +59,16 @@ var apps = apps || {};
 							apps.overlay.set({type: 'bigText', text: response.error}).hide(300, 5000);
 					}
 				});
-			}
-		},
-
-		updateOnChanged: function(e){
-			var input = $(e.target),
-					name = input.attr('name') || '';
-			
-			if(name)
-				this.model.set(name, input.val());
-		},
-		
-		validate: function(model){
-			if(model.changed){
-				$.each(model.changed, function(key, value){
-					model.isValid(key);
-				})
-			}
+			});
 		}
 	});
 
 	$(function () {
 		// Load the apps if the form exists
-		if($('#form-login').length){
-			var view = new loginView({
-				el: '#form-login',
-				model: new loginModel()
-			});
-		}
+		var view = new loginView({
+			el: '#form-login',
+			model: new loginModel()
+		});
 	});
 
 })(jQuery, window, Backbone, _, apps, info);

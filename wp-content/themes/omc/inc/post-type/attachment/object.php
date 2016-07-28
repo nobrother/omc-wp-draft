@@ -1,0 +1,1 @@
+<?phpnamespace OMC\Post_Type\Attachment;use OMC\Post_Type\Abstract_Object;use \WP_Exception as e;class Object extends Abstract_Object{		// Define variable	public static $default_meta = array(		'classes' => 'general',	);}

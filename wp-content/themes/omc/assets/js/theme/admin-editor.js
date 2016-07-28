@@ -131,7 +131,8 @@
 					overlay.addText('Saving...').show(100)
 				},
 				success	: function(response){
-					overlay.addText('Done!').hide(100, 300)
+					overlay.addText('Done!').hide(100, 300);
+					console.log(response);
 					if(response){
 						overlay.addText('Fail!<br>Error: Compile error').hide(100, 5000)
 						console.log(response)

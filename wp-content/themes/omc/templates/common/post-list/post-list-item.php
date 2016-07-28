@@ -1,9 +1,9 @@
 <?php
 
-namespace OMC\Post;
+namespace OMC\Post_Type\Post;
 
 global $post;
-$post_obj = new Post( $post );
+$post_obj = new Object( $post );
 $data = array( 'post_obj' => $post_obj );
 ?>
 

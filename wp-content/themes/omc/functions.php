@@ -115,7 +115,7 @@ function omc_menu_location() {
  */
 add_action( 'omc_init', 'omc_load_framework' );
 function omc_load_framework() {
-	main();	
+	//main();	
 }
 
 
@@ -188,15 +188,6 @@ function omc_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'omc_widgets_init' );
-
-function omc_register_cpt_tax(){
-	// Register CPT
-	omc_cpt( 'portfolio', 'Portfolio', 'Portfolios' )
-		->set_args( 'supports', array( 'title', 'editor', 'thumbnail', 'page-attributes', 'excerpt', 'custom-fields' ) )
-		->set_args( 'menu_icon', 'dashicons-archive' )
-		->register();
-}
-add_action( 'omc_initiated', 'omc_register_cpt_tax' );
 
 /**
  * omc framework initiates here

@@ -1,6 +1,6 @@
 var apps = apps || {};
 
-(function($, window, bb, _, apps, info){
+(info && 'user_register' === info.url_id) && (function($, window, bb, _, apps, info){
 	
 	// Define a model with some validation rules
 	var registerModel = bb.Model.extend({
@@ -81,9 +81,6 @@ var apps = apps || {};
 		register: function () {
 			// Check if the model is valid before saving
 			var view = this;
-			if(view.xhr && view.xhr.state){
-				console.log(view.xhr.state);
-			}
 			
 			this.model.isValid(true, function(){
 
@@ -111,53 +108,7 @@ var apps = apps || {};
 					}
 				});
 			});
-			
-			return;
-			if(this.model.isValid(true)){
-				
-			}
-		},
-
-		updateOnChanged: function(e){
-			var input = $(e.target),
-					name = input.attr('name') || '';
-			
-			if(name)
-				this.model.set(name, input.val());
-		},
-		
-		validate: function(model){
-			if(model.changed){
-				$.each(model.changed, function(key, value){
-					model.isValid(key);
-				})
-			}
-		},
-		
-		// Send ajax to validate username
-		validateUsername: function(model){
-			var delay = this.inputDelay('username');
-			
-			delay(function(){
-				// First check if the username is valid or not
-				if(!model.isValid('user_login', true))
-					return;
-				
-				
-			}, 300);
-		},
-		
-		// Helper function to declare delay
-		inputDelay: function(key){
-			if(!key) return false;
-			
-			this.inputDelayData = this.inputDelayData || {};			
-			
-			if(this.inputDelayData && this.inputDelayData[key])
-				return this.inputDelayData[key];
-			
-			return this.inputDelayData[key] = window.delay();
-		}
+		}		
 	});
 
 	$(function () {

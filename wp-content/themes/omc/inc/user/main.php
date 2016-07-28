@@ -6,6 +6,9 @@ class Main{
 	
 	protected static $pages = array();
 	protected static $need_activation = false;
+	public static $defaults = array(
+		'avatar' => 'https://avatars-cdn.9gag.com/avatar/default_89_100_v0.jpg',
+	);
 	
 	/*
 	 * Initialize
@@ -41,6 +44,7 @@ class Main{
 		
 		// Actions/Filters
 		add_filter( 'omc_custom_urls', array( __CLASS__, 'register_custom_urls' ) );
+		add_action( 'after_setup_theme', array( __CLASS__, 'author_base' ) );
 		
 		// restrict the backend access
 		add_action( 'show_admin_bar', array( __CLASS__, 'maybe_show_admin_bar' ) );
@@ -58,6 +62,20 @@ class Main{
 		
 		// Filters
 		add_filter( 'auth_cookie_expiration', array( __CLASS__, 'stay_login' ), 10, 3 );
+		add_filter( 'omc_info_json', array( __CLASS__, 'json_url_id' ) );
+	}
+	
+	// Update js into json
+	static function json_url_id( $info ){
+		global $current_user;
+		
+		if( Main::is_user_page() )
+			$info['url_id'] = Main::current_user_page();
+		
+		if( is_user_logged_in() )
+			$info['uid'] = $current_user->ID;
+		
+		return $info;
 	}
 	
 	/*
@@ -65,17 +83,14 @@ class Main{
 	 */
 	static function get( $property ){
 		if( property_exists( get_called_class(), $property ) )
-			return self::${$property};
+			return static::${$property};
 		throw new e( 'invalid_property_request_in_'.__class__, 'Property <'.$property.'> does not exists' );
 	}
 	
 	/*
 	 * Set login expiration
 	 */
-	static function stay_login( $expiration, $user_id, $remember ){
-		if( !$remember )
-			return $expiration;
-		
+	static function stay_login( $expiration, $user_id, $remember ){		
 		return 1893456000 - time(); // Lifetime = 2030-01-01 00:00:00
 	}
 	
@@ -92,6 +107,14 @@ class Main{
 			);
 		}
 		return $urls;
+	}
+	
+	/*
+	 * Author base
+	 */
+	static function author_base(){
+		global $wp_rewrite;
+		$wp_rewrite->author_base = 'user';
 	}
 	
 	/*
@@ -142,7 +165,8 @@ class Main{
 	 * capabilities to see the admin bar.
 	 */
 	static public function maybe_show_admin_bar( $is_show ) {
-		return current_user_can( 'edit_posts' ) && $is_show;
+		//return current_user_can( 'manage_options' ) && $is_show;
+		return false;
 	}
 	
 	/*
@@ -156,7 +180,7 @@ class Main{
 			return;
 		
 		// If user can edit posts do nothing
-		if ( current_user_can( 'edit_posts' ) )
+		if ( current_user_can( 'manage_options' ) )
 			return;
 
 		// AJAX requests via wp-admin/admin-ajax.php needs to be passed
@@ -278,7 +302,7 @@ class Main{
 			'user_email' => '',
 			'user_pass' => wp_generate_password( 12, false ),
 			'remember' => true,
-			'role' => 'subscriber',
+			'role' => 'author',
 		);
 		(array) $data += $default;
 		//unset( $data['ID'] );

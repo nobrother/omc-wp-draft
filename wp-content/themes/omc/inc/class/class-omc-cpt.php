@@ -276,7 +276,7 @@ class OMC_CPT {
 		$pages = wp_dropdown_pages( $args );
 		if ( ! empty($pages) ) {
 	?>
-	<p><strong>Playlist</strong></p>
+	<p><strong>Parent: <?php echo $this->args['parent_post_type'] ?></strong></p>
 	<label class="screen-reader-text" for="parent_id"><?php _e('Parent') ?></label>
 	<?php echo $pages; ?>
 	<?php

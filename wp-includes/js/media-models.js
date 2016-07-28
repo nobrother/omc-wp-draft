@@ -256,7 +256,7 @@ Attachment = Backbone.Model.extend({
 		if ( _.isUndefined( this.id ) ) {
 			return $.Deferred().rejectWith( this ).promise();
 		}
-
+		
 		// Overload the `read` request so Attachment.fetch() functions correctly.
 		if ( 'read' === method ) {
 			options = options || {};
@@ -443,7 +443,7 @@ var Attachments = Backbone.Collection.extend({
 		this.props.on( 'change:query',   this._changeQuery,   this );
 
 		this.props.set( _.defaults( options.props || {} ) );
-
+		
 		if ( options.observe ) {
 			this.observe( options.observe );
 		}
@@ -552,6 +552,7 @@ var Attachments = Backbone.Collection.extend({
 		if ( ! this.validateDestroyed && attachment.destroyed ) {
 			return false;
 		}
+		
 		return _.all( this.filters, function( filter ) {
 			return !! filter.call( this, attachment );
 		}, this );
@@ -566,7 +567,7 @@ var Attachments = Backbone.Collection.extend({
 	validate: function( attachment, options ) {
 		var valid = this.validator( attachment ),
 			hasAttachment = !! this.get( attachment.cid );
-
+		
 		if ( ! valid && hasAttachment ) {
 			this.remove( attachment, options );
 		} else if ( valid && ! hasAttachment ) {
@@ -1224,11 +1225,12 @@ Query = Attachments.extend({
 	 */
 	sync: function( method, model, options ) {
 		var args, fallback;
-
+		
 		// Overload the read method so Attachment.fetch() functions correctly.
 		if ( 'read' === method ) {
 			options = options || {};
 			options.context = this;
+			
 			options.data = _.extend( options.data || {}, {
 				action:  'query-attachments',
 				post_id: wp.media.model.settings.post.id

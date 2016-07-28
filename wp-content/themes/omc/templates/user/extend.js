@@ -7,16 +7,73 @@ var apps = apps || {};
 	
 	// Ajax setup
 	$.ajaxSetup({
-		url: info.ajaxurl,
+		url: window.info.ajaxurl,
 		type: 'POST',
-		success: function(responce){
-			console.log(responce);
+		beforeSend: function(xhr, settings){
+			settings.data += '&'+$.param({url_id: window.info.url_id});
+			return true;
+		},
+		success: function(response){
+			console.log(response);
 		},
 		error: function(xhr, status, error){
 			console.log(status + ': ' + error);
 		}
 	});	
-
+	
+	// General Backbone extend
+	_.extend(bb.View.prototype, {
+		
+		// Set current view data into model
+		renderModel: function(model){
+			_.each(
+				model.defaults, 
+				function(value, key){
+					this.updateOnChanged({target: this.$('[name='+key+']')});
+				}, 
+				this);
+		},
+		
+		// Update Model when view change
+		updateOnChanged: function(e){
+			var input = $(e.target),
+					name = input.attr('name') || '';
+			
+			if(name)
+				this.model.set(name, input.val());
+		},
+		
+		// Validate model
+		validate: function(model){
+			if(model.changed){
+				$.each(model.changed, function(key, value){
+					model.isValid(key, function(){
+						//console.log(this);
+					}, function(model){
+						//console.log(model);
+					});
+				})
+			}
+		},
+		
+		/*
+		 * Helper function to declare delay
+		 * HOW TO USE:
+		 * var delay = this.inputDelay('123');
+		 * delay(function(){ ... }, 300);
+		 */
+		inputDelay: function(key){
+			if(!key) return false;
+			
+			this.inputDelayData = this.inputDelayData || {};			
+			
+			if(this.inputDelayData && this.inputDelayData[key])
+				return this.inputDelayData[key];
+			
+			return this.inputDelayData[key] = window.delay();
+		}
+	});
+	
 	// Validation setup
 	_.extend(bb.Validation.callbacks, {
 		valid: function (view, attr, selector) {
@@ -85,13 +142,21 @@ var apps = apps || {};
 				},{
 					maxLength: 60,
 					msg: 'Cannot more than 60 characters.'
+				}],
+				old_password: [{
+					required: true,
+					msg: 'We need your current password.'
+				}],
+				display_name: [{
+					required: true,
+					msg: 'Your name cannot be empty.'
 				}]
 			};
 
 			return function(attributes, extend){
-				var attributes = _.isString(attributes) && [attributes] || false,
+				var attributes = _.isString(attributes) && [attributes] || $.isArray(attributes) && attributes || false,
 						output = attributes && $.isArray(attributes) && _.pick(rules, attributes) || rules;
-
+				
 				// Clone
 				output = JSON.parse(JSON.stringify(output));
 

@@ -1,9 +1,5 @@
 <?php
 /**
- * General template tags that can go anywhere in a template.
- */
-
-/**
  * Make full path to relative to theme
  */
 function omc_relative_path( $path, $root = PARENT_DIR ) {
@@ -116,18 +112,26 @@ function _s( $number = 0, $singular, $prural = '', $zero = '' ){
 /*
  * Echo nonce field
  */
-function omc_nonce_field( $action = '' ){ ?>
-	<input type="hidden" name="omc_nonce" value="<?php echo wp_create_nonce( sha1( $action.Cookie::Get( 'unique_user_id' ) ) ) ?>">
+function omc_nonce_field( $action = '', $key = '' ){ 
+	$key .= $action;
+	$nonce = sha1( $key.Cookie::Get( 'unique_user_id' ) );
+	$field = 'omc_nonce_'.substr( md5( $nonce ), -7 );
+?>
+	<input type="hidden" name="<?php echo $field ?>" value="<?php echo wp_create_nonce( $nonce ) ?>">
 	<input type="hidden" name="action" value="<?php esc_attr_e( $action ) ?>">
 <?php }
 
 /*
  * Verify nonce
  */
-function omc_verify_nonce( $action = '' ){ 
-	if( empty( $_POST['omc_nonce'] ) )
+function omc_verify_nonce( $action = '', $key = '' ){ 
+	$key .= $action;
+	$nonce = sha1( $key.Cookie::Get( 'unique_user_id' ) );
+	$field = 'omc_nonce_'.substr( md5( $nonce ), -7 );
+	
+	if( empty( $_POST[$field] ) )
 		return false;
-	return wp_verify_nonce( $_POST['omc_nonce'], sha1( $action.Cookie::Get( 'unique_user_id' ) ) );
+	return wp_verify_nonce( $_POST[$field], $nonce );
 }
  
 /*

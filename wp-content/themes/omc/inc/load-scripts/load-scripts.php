@@ -54,6 +54,7 @@
 add_action( 'wp_enqueue_scripts', 'omc_enqueue_js_plugin', 10 );
 function omc_enqueue_js_plugin() {
 	//omc_load_bootstrap();
+	wp_enqueue_media();
 } 
  
 /**
@@ -491,7 +492,7 @@ function omc_enqueue_theme_scripts() {
 		wp_enqueue_script( 'main', omc_theme_js_path_url( 'pc', 'url' ), array(), false, true );
 	
 	wp_localize_script( 'main', 'info',
-		array
+		apply_filters( 'omc_info_json', array
 		( 
 			'siteurl'	=> site_url(),
 			'ajaxurl' 	=> admin_url( 'admin-ajax.php?frontend_ajax=' . OMC_FRONTEND_AJAX_HASH ),
@@ -503,7 +504,8 @@ function omc_enqueue_theme_scripts() {
 			'is_phone' => is_phone() ? 1 : 0,
 			'is_ios' => is_ios() ? 1 : 0,
 			'is_android' => is_android() ? 1 : 0,
-		)
+			'url_id' => '',
+		))
 	);
 	
 	// Add extra scripts for all

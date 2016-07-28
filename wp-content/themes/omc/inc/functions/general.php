@@ -602,7 +602,7 @@ function compile_js(){
 		return OMC_JS_THEME_DIR.'/'.$value.'.js';
 	}, $scripts_list );
 	
-	$admin_scripts_list = apply_filters( 'omc_enqueue_admin_scripts_list', array( 'admin', 'admin-editor' ) );
+	$admin_scripts_list = apply_filters( 'omc_enqueue_admin_scripts_list', array( 'main', 'admin', 'admin-editor' ) );
 	$admin_js = array_map( function( $value ){
 		return OMC_JS_THEME_DIR.'/'.$value.'.js';
 	}, $admin_scripts_list );

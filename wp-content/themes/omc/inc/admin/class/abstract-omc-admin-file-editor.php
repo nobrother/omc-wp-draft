@@ -70,7 +70,7 @@ abstract class OMC_File_Editor_Settings extends OMC_Admin_Basic {
 					) 
 			)
 			return;
-
+			
 		// Get current file		
 		$newcontent = wp_unslash( $_POST['newcontent'] );		
 		$file = wp_unslash( $_POST['edit_file'] );
